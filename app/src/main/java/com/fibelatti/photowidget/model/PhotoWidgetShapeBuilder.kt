@@ -160,6 +160,89 @@ object PhotoWidgetShapeBuilder {
             id = "pixel-circle",
             roundedPolygon = MaterialShapes.PixelCircle,
         ),
+        // Additional unique shapes
+        PhotoWidgetShape.Polygon(
+            id = "triangle",
+            numVertices = 3,
+            rounding = 0.1f,
+        ),
+        PhotoWidgetShape.Polygon(
+            id = "pentagon",
+            numVertices = 5,
+            rounding = 0.15f,
+        ),
+        PhotoWidgetShape.Polygon(
+            id = "heptagon",
+            numVertices = 7,
+            rounding = 0.12f,
+        ),
+        PhotoWidgetShape.Polygon(
+            id = "nonagon",
+            numVertices = 9,
+            rounding = 0.1f,
+        ),
+        PhotoWidgetShape.Polygon(
+            id = "decagon",
+            numVertices = 10,
+            rounding = 0.08f,
+        ),
+        PhotoWidgetShape.Star(
+            id = "star-5",
+            numVertices = 5,
+            rounding = 0.3f,
+            innerRadius = 0.4f,
+            innerRounding = 0.1f,
+        ),
+        PhotoWidgetShape.Star(
+            id = "star-6",
+            numVertices = 6,
+            rounding = 0.25f,
+            innerRadius = 0.45f,
+            innerRounding = 0.1f,
+        ),
+        PhotoWidgetShape.Star(
+            id = "star-8",
+            numVertices = 8,
+            rounding = 0.2f,
+            innerRadius = 0.5f,
+            innerRounding = 0.1f,
+        ),
+        PhotoWidgetShape.Polygon(
+            id = "rounded-triangle",
+            numVertices = 3,
+            rounding = 0.3f,
+        ),
+        PhotoWidgetShape.Polygon(
+            id = "rounded-pentagon",
+            numVertices = 5,
+            rounding = 0.25f,
+        ),
+        PhotoWidgetShape.Polygon(
+            id = "rounded-hexagon",
+            numVertices = 6,
+            rounding = 0.2f,
+        ),
+        PhotoWidgetShape.Polygon(
+            id = "rounded-octagon",
+            numVertices = 8,
+            rounding = 0.15f,
+        ),
+        // Enable some previously disabled shapes that should work
+        PhotoWidgetShape.Material(
+            id = "bun",
+            roundedPolygon = MaterialShapes.Bun,
+            enabled = true, // Try enabling this one
+        ),
+        PhotoWidgetShape.Material(
+            id = "diamond",
+            roundedPolygon = MaterialShapes.Diamond,
+            enabled = true, // Try enabling this one
+        ),
+        PhotoWidgetShape.Material(
+            id = "puffy",
+            roundedPolygon = MaterialShapes.Puffy,
+            enabled = true, // Try enabling this one
+        ),
     ).filter { it.enabled }
 
     init {

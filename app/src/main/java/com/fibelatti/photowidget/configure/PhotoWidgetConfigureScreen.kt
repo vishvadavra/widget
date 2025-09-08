@@ -10,6 +10,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -41,15 +42,19 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.layout.LazyLayoutCacheWindow
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonGroup
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledTonalIconButton
@@ -90,6 +95,7 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.unit.dp
+import androidx.core.graphics.toColorInt
 import com.fibelatti.photowidget.R
 import com.fibelatti.photowidget.model.DirectorySorting
 import com.fibelatti.photowidget.model.LocalPhoto
@@ -98,6 +104,7 @@ import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
 import com.fibelatti.photowidget.model.PhotoWidgetBorder
 import com.fibelatti.photowidget.model.PhotoWidgetColors
 import com.fibelatti.photowidget.model.PhotoWidgetCycleMode
+import com.fibelatti.photowidget.model.PhotoWidgetShapeBuilder
 import com.fibelatti.photowidget.model.PhotoWidgetSource
 import com.fibelatti.photowidget.model.PhotoWidgetTapActions
 import com.fibelatti.photowidget.model.canShuffle
@@ -106,6 +113,10 @@ import com.fibelatti.photowidget.platform.ComposeBottomSheetDialog
 import com.fibelatti.photowidget.platform.formatPercent
 import com.fibelatti.photowidget.platform.formatRangeValue
 import com.fibelatti.photowidget.platform.withRoundedCorners
+import com.fibelatti.photowidget.platform.getColorPalette
+import com.fibelatti.photowidget.platform.getDynamicAttributeColor
+import com.fibelatti.photowidget.platform.colorForType
+import com.fibelatti.photowidget.model.borderPercent
 import com.fibelatti.photowidget.preferences.BooleanDefault
 import com.fibelatti.photowidget.preferences.CornerRadiusPicker
 import com.fibelatti.photowidget.preferences.DefaultPicker
@@ -116,12 +127,14 @@ import com.fibelatti.photowidget.preferences.ShapePicker
 import com.fibelatti.photowidget.ui.LoadingIndicator
 import com.fibelatti.photowidget.ui.ShapedPhoto
 import com.fibelatti.photowidget.ui.SliderSmallThumb
+import com.fibelatti.photowidget.ui.ColoredShape
 import com.fibelatti.ui.foundation.dpToPx
 import com.fibelatti.ui.foundation.fadingEdges
 import com.fibelatti.ui.preview.AllPreviews
 import com.fibelatti.ui.text.AutoSizeText
 import com.fibelatti.ui.theme.ExtendedTheme
 import java.util.concurrent.TimeUnit
+import kotlin.math.roundToInt
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyGridState
 
@@ -176,7 +189,6 @@ fun PhotoWidgetConfigureScreen(
             onNavClick = onNavClick,
             onMoveLeftClick = onMoveLeftClick,
             onMoveRightClick = onMoveRightClick,
-            onAspectRatioClick = onAspectRatioClick,
             onCropClick = onCropClick,
             onRemoveClick = onRemoveClick,
             onChangeSource = onChangeSource,
@@ -194,94 +206,13 @@ fun PhotoWidgetConfigureScreen(
                 )
             },
             onTapActionPickerClick = onTapActionPickerClick,
-            onShapeClick = {
-                ComposeBottomSheetDialog(localContext) {
-                    ShapePicker(
-                        onClick = { newShapeId ->
-                            onShapeChange(newShapeId)
-                            dismiss()
-                        },
-                        selectedShapeId = photoWidget.shapeId,
-                    )
-                }.show()
-            },
-            onCornerRadiusClick = {
-                ComposeBottomSheetDialog(localContext) {
-                    CompositionLocalProvider(LocalSamplePhoto provides selectedPhoto) {
-                        CornerRadiusPicker(
-                            currentValue = photoWidget.cornerRadius,
-                            onApplyClick = { newValue ->
-                                onCornerRadiusChange(newValue)
-                                dismiss()
-                            },
-                        )
-                    }
-                }.show()
-            },
-            onBorderClick = {
-                PhotoWidgetBorderPicker.show(
-                    context = localContext,
-                    localPhoto = selectedPhoto,
-                    currentBorder = photoWidget.border,
-                    onApplyClick = onBorderChange,
-                )
-            },
-            onOpacityClick = {
-                ComposeBottomSheetDialog(localContext) {
-                    CompositionLocalProvider(LocalSamplePhoto provides selectedPhoto) {
-                        OpacityPicker(
-                            currentValue = photoWidget.colors.opacity,
-                            onApplyClick = { newValue ->
-                                onOpacityChange(newValue)
-                                dismiss()
-                            },
-                        )
-                    }
-                }.show()
-            },
-            onSaturationClick = {
-                PhotoWidgetSaturationPicker.show(
-                    context = localContext,
-                    localPhoto = selectedPhoto,
-                    currentSaturation = photoWidget.colors.saturation,
-                    onApplyClick = onSaturationChange,
-                )
-            },
-            onBrightnessClick = {
-                PhotoWidgetBrightnessPicker.show(
-                    context = localContext,
-                    localPhoto = selectedPhoto,
-                    currentBrightness = photoWidget.colors.brightness,
-                    onApplyClick = onBrightnessChange,
-                )
-            },
-            onOffsetClick = {
-                ComposeBottomSheetDialog(localContext) {
-                    CompositionLocalProvider(LocalSamplePhoto provides selectedPhoto) {
-                        PhotoWidgetOffsetPicker(
-                            horizontalOffset = photoWidget.horizontalOffset,
-                            verticalOffset = photoWidget.verticalOffset,
-                            onApplyClick = { newHorizontalOffset, newVerticalOffset ->
-                                onOffsetChange(newHorizontalOffset, newVerticalOffset)
-                                dismiss()
-                            },
-                        )
-                    }
-                }.show()
-            },
-            onPaddingClick = {
-                ComposeBottomSheetDialog(localContext) {
-                    CompositionLocalProvider(LocalSamplePhoto provides selectedPhoto) {
-                        PaddingPicker(
-                            currentValue = photoWidget.padding,
-                            onApplyClick = { newValue ->
-                                onPaddingChange(newValue)
-                                dismiss()
-                            },
-                        )
-                    }
-                }.show()
-            },
+            onShapeChange = onShapeChange,
+            onCornerRadiusChange = onCornerRadiusChange,
+            onBorderChange = onBorderChange,
+            onOpacityChange = onOpacityChange,
+            onSaturationChange = onSaturationChange,
+            onBrightnessChange = onBrightnessChange,
+            onPaddingChange = onPaddingChange,
             onAddToHomeClick = onAddToHomeClick,
             modifier = Modifier
                 .fillMaxSize()
@@ -311,7 +242,6 @@ private fun PhotoWidgetConfigureContent(
     isUpdating: Boolean,
     selectedPhoto: LocalPhoto?,
     onNavClick: () -> Unit,
-    onAspectRatioClick: () -> Unit,
     onCropClick: (LocalPhoto) -> Unit,
     onRemoveClick: (LocalPhoto) -> Unit,
     onMoveLeftClick: (LocalPhoto) -> Unit,
@@ -326,14 +256,13 @@ private fun PhotoWidgetConfigureContent(
     onShuffleChange: (Boolean) -> Unit,
     onSortClick: () -> Unit,
     onTapActionPickerClick: (PhotoWidgetTapActions) -> Unit,
-    onShapeClick: () -> Unit,
-    onCornerRadiusClick: () -> Unit,
-    onBorderClick: () -> Unit,
-    onOpacityClick: () -> Unit,
-    onSaturationClick: () -> Unit,
-    onBrightnessClick: () -> Unit,
-    onOffsetClick: () -> Unit,
-    onPaddingClick: () -> Unit,
+    onShapeChange: (String) -> Unit,
+    onCornerRadiusChange: (Int) -> Unit,
+    onBorderChange: (PhotoWidgetBorder) -> Unit,
+    onOpacityChange: (Float) -> Unit,
+    onSaturationChange: (Float) -> Unit,
+    onBrightnessChange: (Float) -> Unit,
+    onPaddingChange: (Int) -> Unit,
     onAddToHomeClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -363,15 +292,13 @@ private fun PhotoWidgetConfigureContent(
                     onPhotoClick = onPhotoClick,
                     onReorderFinished = onReorderFinished,
                     onRemovedPhotoClick = onRemovedPhotoClick,
-                    onAspectRatioClick = onAspectRatioClick,
-                    onShapeClick = onShapeClick,
-                    onCornerRadiusClick = onCornerRadiusClick,
-                    onBorderClick = onBorderClick,
-                    onOpacityClick = onOpacityClick,
-                    onSaturationClick = onSaturationClick,
-                    onBrightnessClick = onBrightnessClick,
-                    onOffsetClick = onOffsetClick,
-                    onPaddingClick = onPaddingClick,
+                    onShapeChange = onShapeChange,
+                    onCornerRadiusChange = onCornerRadiusChange,
+                    onBorderChange = onBorderChange,
+                    onOpacityChange = onOpacityChange,
+                    onSaturationChange = onSaturationChange,
+                    onBrightnessChange = onBrightnessChange,
+                    onPaddingChange = onPaddingChange,
                     onCycleModePickerClick = onCycleModePickerClick,
                     onShuffleChange = onShuffleChange,
                     onSortClick = onSortClick,
@@ -406,15 +333,13 @@ private fun PhotoWidgetConfigureContent(
                     onPhotoClick = onPhotoClick,
                     onReorderFinished = onReorderFinished,
                     onRemovedPhotoClick = onRemovedPhotoClick,
-                    onAspectRatioClick = onAspectRatioClick,
-                    onShapeClick = onShapeClick,
-                    onCornerRadiusClick = onCornerRadiusClick,
-                    onBorderClick = onBorderClick,
-                    onOpacityClick = onOpacityClick,
-                    onSaturationClick = onSaturationClick,
-                    onBrightnessClick = onBrightnessClick,
-                    onOffsetClick = onOffsetClick,
-                    onPaddingClick = onPaddingClick,
+                    onShapeChange = onShapeChange,
+                    onCornerRadiusChange = onCornerRadiusChange,
+                    onBorderChange = onBorderChange,
+                    onOpacityChange = onOpacityChange,
+                    onSaturationChange = onSaturationChange,
+                    onBrightnessChange = onBrightnessChange,
+                    onPaddingChange = onPaddingChange,
                     onCycleModePickerClick = onCycleModePickerClick,
                     onShuffleChange = onShuffleChange,
                     onSortClick = onSortClick,
@@ -499,15 +424,13 @@ private fun PhotoWidgetEditor(
     onPhotoClick: (LocalPhoto) -> Unit,
     onReorderFinished: (List<LocalPhoto>) -> Unit,
     onRemovedPhotoClick: (LocalPhoto) -> Unit,
-    onAspectRatioClick: () -> Unit,
-    onShapeClick: () -> Unit,
-    onCornerRadiusClick: () -> Unit,
-    onBorderClick: () -> Unit,
-    onOpacityClick: () -> Unit,
-    onSaturationClick: () -> Unit,
-    onBrightnessClick: () -> Unit,
-    onOffsetClick: () -> Unit,
-    onPaddingClick: () -> Unit,
+    onShapeChange: (String) -> Unit,
+    onCornerRadiusChange: (Int) -> Unit,
+    onBorderChange: (PhotoWidgetBorder) -> Unit,
+    onOpacityChange: (Float) -> Unit,
+    onSaturationChange: (Float) -> Unit,
+    onBrightnessChange: (Float) -> Unit,
+    onPaddingChange: (Int) -> Unit,
     onCycleModePickerClick: (PhotoWidgetCycleMode) -> Unit,
     onShuffleChange: (Boolean) -> Unit,
     onSortClick: () -> Unit,
@@ -552,15 +475,13 @@ private fun PhotoWidgetEditor(
                 ConfigureTab.APPEARANCE -> {
                     AppearanceTab(
                         photoWidget = photoWidget,
-                        onAspectRatioClick = onAspectRatioClick,
-                        onShapeClick = onShapeClick,
-                        onCornerRadiusClick = onCornerRadiusClick,
-                        onBorderClick = onBorderClick,
-                        onOpacityClick = onOpacityClick,
-                        onSaturationClick = onSaturationClick,
-                        onBrightnessClick = onBrightnessClick,
-                        onOffsetClick = onOffsetClick,
-                        onPaddingClick = onPaddingClick,
+                        onShapeChange = onShapeChange,
+                        onCornerRadiusChange = onCornerRadiusChange,
+                        onBorderChange = onBorderChange,
+                        onOpacityChange = onOpacityChange,
+                        onSaturationChange = onSaturationChange,
+                        onBrightnessChange = onBrightnessChange,
+                        onPaddingChange = onPaddingChange,
                         modifier = tabContentModifier,
                     )
                 }
@@ -631,109 +552,72 @@ private fun ContentTab(
 @Composable
 private fun AppearanceTab(
     photoWidget: PhotoWidget,
-    onAspectRatioClick: () -> Unit,
-    onShapeClick: () -> Unit,
-    onCornerRadiusClick: () -> Unit,
-    onBorderClick: () -> Unit,
-    onOpacityClick: () -> Unit,
-    onSaturationClick: () -> Unit,
-    onBrightnessClick: () -> Unit,
-    onOffsetClick: () -> Unit,
-    onPaddingClick: () -> Unit,
+    onShapeChange: (String) -> Unit,
+    onCornerRadiusChange: (Int) -> Unit,
+    onBorderChange: (PhotoWidgetBorder) -> Unit,
+    onOpacityChange: (Float) -> Unit,
+    onSaturationChange: (Float) -> Unit,
+    onBrightnessChange: (Float) -> Unit,
+    onPaddingChange: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        PickerDefault(
-            title = stringResource(id = R.string.photo_widget_aspect_ratio_title),
-            currentValue = stringResource(id = photoWidget.aspectRatio.label),
-            onClick = onAspectRatioClick,
-            modifier = Modifier.padding(horizontal = 16.dp),
-        )
 
         if (PhotoWidgetAspectRatio.SQUARE == photoWidget.aspectRatio) {
-            ShapeDefault(
+            InlineShapePicker(
                 title = stringResource(id = R.string.widget_defaults_shape),
-                currentValue = photoWidget.shapeId,
-                onClick = onShapeClick,
+                currentShapeId = photoWidget.shapeId,
+                onShapeChange = onShapeChange,
                 modifier = Modifier.padding(horizontal = 16.dp),
             )
         } else if (PhotoWidgetAspectRatio.FILL_WIDGET != photoWidget.aspectRatio) {
-            PickerDefault(
+            InlineCornerRadiusPicker(
                 title = stringResource(id = R.string.widget_defaults_corner_radius),
-                currentValue = photoWidget.cornerRadius.toString(),
-                onClick = onCornerRadiusClick,
+                currentValue = photoWidget.cornerRadius,
+                onValueChange = onCornerRadiusChange,
                 modifier = Modifier.padding(horizontal = 16.dp),
             )
         }
 
         if (PhotoWidgetAspectRatio.FILL_WIDGET != photoWidget.aspectRatio) {
-            PickerDefault(
+            InlineBorderPicker(
                 title = stringResource(R.string.photo_widget_configure_border),
-                currentValue = when (photoWidget.border) {
-                    is PhotoWidgetBorder.None -> stringResource(id = R.string.photo_widget_configure_border_none)
-                    is PhotoWidgetBorder.Color -> "#${photoWidget.border.colorHex}".toUpperCase(Locale.current)
-                    is PhotoWidgetBorder.Dynamic -> stringResource(R.string.photo_widget_configure_border_dynamic)
-                    is PhotoWidgetBorder.MatchPhoto -> {
-                        when (photoWidget.border.type) {
-                            PhotoWidgetBorder.MatchPhoto.Type.DOMINANT -> {
-                                stringResource(R.string.photo_widget_configure_border_color_palette_dominant)
-                            }
-
-                            PhotoWidgetBorder.MatchPhoto.Type.VIBRANT -> {
-                                stringResource(R.string.photo_widget_configure_border_color_palette_vibrant)
-                            }
-
-                            PhotoWidgetBorder.MatchPhoto.Type.MUTED -> {
-                                stringResource(R.string.photo_widget_configure_border_color_palette_muted)
-                            }
-                        }
-                    }
-                },
-                onClick = onBorderClick,
+                currentBorder = photoWidget.border,
+                onBorderChange = onBorderChange,
                 modifier = Modifier.padding(horizontal = 16.dp),
             )
         }
 
-        PickerDefault(
+        InlineOpacityPicker(
             title = stringResource(id = R.string.widget_defaults_opacity),
-            currentValue = formatPercent(value = photoWidget.colors.opacity, fractionDigits = 0),
-            onClick = onOpacityClick,
+            currentValue = photoWidget.colors.opacity,
+            onValueChange = onOpacityChange,
             modifier = Modifier.padding(horizontal = 16.dp),
         )
 
-        PickerDefault(
+        InlineSaturationPicker(
             title = stringResource(R.string.widget_defaults_saturation),
-            currentValue = formatRangeValue(value = PhotoWidgetColors.pickerSaturation(photoWidget.colors.saturation)),
-            onClick = onSaturationClick,
+            currentValue = photoWidget.colors.saturation,
+            onValueChange = onSaturationChange,
             modifier = Modifier.padding(horizontal = 16.dp),
         )
 
-        PickerDefault(
+        InlineBrightnessPicker(
             title = stringResource(R.string.widget_defaults_brightness),
-            currentValue = formatRangeValue(value = photoWidget.colors.brightness),
-            onClick = onBrightnessClick,
+            currentValue = photoWidget.colors.brightness,
+            onValueChange = onBrightnessChange,
             modifier = Modifier.padding(horizontal = 16.dp),
         )
 
-        PickerDefault(
-            title = stringResource(id = R.string.photo_widget_configure_offset),
-            currentValue = stringResource(
-                id = R.string.photo_widget_configure_offset_current_values,
-                photoWidget.horizontalOffset,
-                photoWidget.verticalOffset,
-            ),
-            onClick = onOffsetClick,
-            modifier = Modifier.padding(horizontal = 16.dp),
-        )
 
         if (PhotoWidgetAspectRatio.FILL_WIDGET != photoWidget.aspectRatio) {
-            PickerDefault(
+            InlinePaddingPicker(
                 title = stringResource(id = R.string.photo_widget_configure_padding),
-                currentValue = photoWidget.padding.toString(),
-                onClick = onPaddingClick,
+                currentValue = photoWidget.padding,
+                onValueChange = onPaddingChange,
                 modifier = Modifier.padding(horizontal = 16.dp),
             )
         }
@@ -1275,6 +1159,427 @@ private fun PaddingPicker(
     }
 }
 // endregion Pickers
+
+// region Inline Pickers
+@Composable
+private fun InlineShapePicker(
+    title: String,
+    currentShapeId: String,
+    onShapeChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors().run {
+            copy(containerColor = containerColor.copy(alpha = 0.6f))
+        },
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface,
+            )
+
+            LazyHorizontalGrid(
+                rows = GridCells.Fixed(count = 3),
+                modifier = Modifier
+                    .height(240.dp)
+                    .fillMaxWidth(),
+                contentPadding = PaddingValues(horizontal = 8.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                items(PhotoWidgetShapeBuilder.shapes) { shape ->
+                    val isSelected = shape.id == currentShapeId
+
+                    // Create a variety of white shade colors
+                    val whiteShades = listOf(
+                        Color(0xFFFFFFFF), // Pure white
+                        Color(0xFFF8F9FA), // Very light gray
+                        Color(0xFFE9ECEF), // Light gray
+                        Color(0xFFDEE2E6), // Medium light gray
+                        Color(0xFFCED4DA), // Medium gray
+                        Color(0xFFADB5BD), // Darker gray
+                        Color(0xFF6C757D), // Dark gray
+                        Color(0xFF495057), // Very dark gray
+                        Color(0xFF343A40), // Almost black
+                        Color(0xFF212529), // Black
+                    )
+
+                    // Cycle through white shades based on shape index
+                    val colorIndex = PhotoWidgetShapeBuilder.shapes.indexOf(shape) % whiteShades.size
+                    val baseColor = whiteShades[colorIndex]
+
+                    val shapeColor = if (isSelected) {
+                        MaterialTheme.colorScheme.primary
+                    } else {
+                        baseColor
+                    }
+
+                    Box(
+                        modifier = Modifier
+                            .size(60.dp)
+                            .clickable { onShapeChange(shape.id) }
+                            .then(
+                                if (isSelected) {
+                                    Modifier.border(
+                                        width = 2.dp,
+                                        color = MaterialTheme.colorScheme.primary,
+                                        shape = RoundedCornerShape(8.dp)
+                                    )
+                                } else {
+                                    Modifier
+                                }
+                            )
+                    ) {
+                        ColoredShape(
+                            shapeId = shape.id,
+                            color = shapeColor,
+                            modifier = Modifier.fillMaxSize(),
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun InlineCornerRadiusPicker(
+    title: String,
+    currentValue: Int,
+    onValueChange: (Int) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors().run {
+            copy(containerColor = containerColor.copy(alpha = 0.6f))
+        },
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface,
+            )
+
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                Slider(
+                    value = currentValue.toFloat(),
+                    onValueChange = { onValueChange(it.roundToInt()) },
+                    modifier = Modifier.fillMaxWidth(),
+                    valueRange = 0f..128f,
+                    thumb = { SliderSmallThumb() },
+                )
+
+                Text(
+                    text = "$currentValue",
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    textAlign = TextAlign.End,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun InlineBorderPicker(
+    title: String,
+    currentBorder: PhotoWidgetBorder,
+    onBorderChange: (PhotoWidgetBorder) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors().run {
+            copy(containerColor = containerColor.copy(alpha = 0.6f))
+        },
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface,
+            )
+
+            // Border type selection
+            LazyRow(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                contentPadding = PaddingValues(horizontal = 4.dp),
+            ) {
+                items(PhotoWidgetBorder.entries) { border ->
+                    val isSelected = border.serializedName == currentBorder.serializedName
+                    OutlinedButton(
+                        onClick = { onBorderChange(border) },
+                        modifier = Modifier.height(36.dp),
+                        colors = if (isSelected) {
+                            ButtonDefaults.outlinedButtonColors(
+                                containerColor = MaterialTheme.colorScheme.primary,
+                                contentColor = MaterialTheme.colorScheme.onPrimary,
+                            )
+                        } else {
+                            ButtonDefaults.outlinedButtonColors()
+                        },
+                    ) {
+                        Text(
+                            text = stringResource(id = border.label),
+                            style = MaterialTheme.typography.labelSmall,
+                        )
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun InlineOpacityPicker(
+    title: String,
+    currentValue: Float,
+    onValueChange: (Float) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors().run {
+            copy(containerColor = containerColor.copy(alpha = 0.6f))
+        },
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface,
+            )
+
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                Slider(
+                    value = currentValue,
+                    onValueChange = onValueChange,
+                    modifier = Modifier.fillMaxWidth(),
+                    valueRange = 0f..100f,
+                    thumb = { SliderSmallThumb() },
+                )
+
+                Text(
+                    text = formatPercent(value = currentValue, fractionDigits = 0),
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    textAlign = TextAlign.End,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun InlineSaturationPicker(
+    title: String,
+    currentValue: Float,
+    onValueChange: (Float) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors().run {
+            copy(containerColor = containerColor.copy(alpha = 0.6f))
+        },
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface,
+            )
+
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                Slider(
+                    value = PhotoWidgetColors.pickerSaturation(currentValue),
+                    onValueChange = { onValueChange(PhotoWidgetColors.persistenceSaturation(it)) },
+                    modifier = Modifier.fillMaxWidth(),
+                    valueRange = -100f..100f,
+                    thumb = { SliderSmallThumb() },
+                )
+
+                Text(
+                    text = formatRangeValue(value = PhotoWidgetColors.pickerSaturation(currentValue)),
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    textAlign = TextAlign.End,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun InlineBrightnessPicker(
+    title: String,
+    currentValue: Float,
+    onValueChange: (Float) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors().run {
+            copy(containerColor = containerColor.copy(alpha = 0.6f))
+        },
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface,
+            )
+
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                Slider(
+                    value = currentValue,
+                    onValueChange = onValueChange,
+                    modifier = Modifier.fillMaxWidth(),
+                    valueRange = -100f..100f,
+                    thumb = { SliderSmallThumb() },
+                )
+
+                Text(
+                    text = formatRangeValue(value = currentValue),
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    textAlign = TextAlign.End,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun InlinePaddingPicker(
+    title: String,
+    currentValue: Int,
+    onValueChange: (Int) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors().run {
+            copy(containerColor = containerColor.copy(alpha = 0.6f))
+        },
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface,
+            )
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Image(
+                    bitmap = rememberSampleBitmap()
+                        .withRoundedCorners(radius = PhotoWidget.DEFAULT_CORNER_RADIUS.dpToPx())
+                        .asImageBitmap(),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(80.dp)
+                        .padding((currentValue * PhotoWidget.POSITIONING_MULTIPLIER).dp),
+                )
+
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    Slider(
+                        value = currentValue.toFloat(),
+                        onValueChange = { onValueChange(it.roundToInt()) },
+                        modifier = Modifier.fillMaxWidth(),
+                        valueRange = 0f..20f,
+                        thumb = { SliderSmallThumb() },
+                    )
+
+                    Text(
+                        text = "$currentValue",
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        textAlign = TextAlign.End,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+            }
+        }
+    }
+}
+// endregion Inline Pickers
 
 // region Previews
 @Composable

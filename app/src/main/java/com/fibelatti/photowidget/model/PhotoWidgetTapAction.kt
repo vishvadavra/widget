@@ -124,11 +124,6 @@ sealed interface PhotoWidgetTapAction : Parcelable {
             listOf(
                 None,
                 ViewFullScreen(),
-                ViewInGallery(),
-                ViewNextPhoto,
-                ViewPreviousPhoto,
-                ChooseNextPhoto,
-                ToggleCycling(),
                 AppShortcut(),
                 UrlShortcut(),
             )
