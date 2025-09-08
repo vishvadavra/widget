@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Only colors that change depending on the configuration should be defined here
+    everything else should be follow the style and use the query syntax (?attr/) -->
+    <color name="color_background">#FFFFFF</color>
+
+    <color name="color_icon">#424242</color>
+
+    <color name="ic_launcher_background">#00390D</color>
+</resources>

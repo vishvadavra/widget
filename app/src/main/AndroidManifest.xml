@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.INFO" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.HOME" />
+        </intent>
+    </queries>
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission
+        android:name="android.permission.SCHEDULE_EXACT_ALARM"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE"
+        tools:node="remove" />
+
+    <application
+        android:name=".App"
+        android:enableOnBackInvokedCallback="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:targetApi="tiramisu">
+
+        <activity
+            android:name=".home.HomeActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".preferences.WidgetDefaultsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".backup.PhotoWidgetBackupActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".configure.PhotoWidgetConfigureActivity"
+            android:enableOnBackInvokedCallback="false"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".configure.PhotoCropActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".viewer.PhotoWidgetViewerActivity"
+            android:enableOnBackInvokedCallback="false"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.TransparentActivity" />
+
+        <activity
+            android:name=".chooser.PhotoWidgetChooserActivity"
+            android:enableOnBackInvokedCallback="false"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.TransparentActivity" />
+
+        <activity
+            android:name=".widget.ToggleCyclingFeedbackActivity"
+            android:enableOnBackInvokedCallback="false"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.TransparentActivity" />
+
+        <activity
+            android:name=".licenses.OssLicensesActivity"
+            android:exported="false" />
+
+        <receiver
+            android:name=".widget.PhotoWidgetProvider"
+            android:exported="true"
+            android:label="@string/app_name">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/photo_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".configure.PhotoWidgetPinnedReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name=".widget.PhotoWidgetRescheduleReceiver"
+            android:exported="false">
+
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="com.fibelatti.photowidget.action.RESCHEDULE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".widget.ExactRepeatingAlarmReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name=".platform.ConfigurationChangedReceiver"
+            android:exported="false">
+
+            <intent-filter>
+                <action android:name="android.intent.action.CONFIGURATION_CHANGED" />
+                <action android:name="android.intent.action.SCREEN_ON" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+        </provider>
+    </application>
+
+</manifest>
