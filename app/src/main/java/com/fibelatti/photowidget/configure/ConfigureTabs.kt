@@ -35,7 +35,6 @@ enum class ConfigureTab(
 
     CONTENT(title = R.string.photo_widget_configure_tab_content),
     APPEARANCE(title = R.string.photo_widget_configure_tab_appearance),
-    BEHAVIOR(title = R.string.photo_widget_configure_tab_behavior),
 }
 
 @Composable

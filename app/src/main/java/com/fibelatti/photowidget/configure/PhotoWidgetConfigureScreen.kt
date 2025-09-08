@@ -97,17 +97,14 @@ import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.toColorInt
 import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.model.DirectorySorting
 import com.fibelatti.photowidget.model.LocalPhoto
 import com.fibelatti.photowidget.model.PhotoWidget
 import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
 import com.fibelatti.photowidget.model.PhotoWidgetBorder
 import com.fibelatti.photowidget.model.PhotoWidgetColors
-import com.fibelatti.photowidget.model.PhotoWidgetCycleMode
 import com.fibelatti.photowidget.model.PhotoWidgetShapeBuilder
 import com.fibelatti.photowidget.model.PhotoWidgetSource
 import com.fibelatti.photowidget.model.PhotoWidgetTapActions
-import com.fibelatti.photowidget.model.canShuffle
 import com.fibelatti.photowidget.model.canSort
 import com.fibelatti.photowidget.platform.ComposeBottomSheetDialog
 import com.fibelatti.photowidget.platform.formatPercent
@@ -117,13 +114,8 @@ import com.fibelatti.photowidget.platform.getColorPalette
 import com.fibelatti.photowidget.platform.getDynamicAttributeColor
 import com.fibelatti.photowidget.platform.colorForType
 import com.fibelatti.photowidget.model.borderPercent
-import com.fibelatti.photowidget.preferences.BooleanDefault
-import com.fibelatti.photowidget.preferences.CornerRadiusPicker
 import com.fibelatti.photowidget.preferences.DefaultPicker
-import com.fibelatti.photowidget.preferences.OpacityPicker
 import com.fibelatti.photowidget.preferences.PickerDefault
-import com.fibelatti.photowidget.preferences.ShapeDefault
-import com.fibelatti.photowidget.preferences.ShapePicker
 import com.fibelatti.photowidget.ui.LoadingIndicator
 import com.fibelatti.photowidget.ui.ShapedPhoto
 import com.fibelatti.photowidget.ui.SliderSmallThumb
@@ -133,7 +125,6 @@ import com.fibelatti.ui.foundation.fadingEdges
 import com.fibelatti.ui.preview.AllPreviews
 import com.fibelatti.ui.text.AutoSizeText
 import com.fibelatti.ui.theme.ExtendedTheme
-import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyGridState
@@ -156,9 +147,6 @@ fun PhotoWidgetConfigureScreen(
     onPhotoClick: (LocalPhoto) -> Unit,
     onReorderFinished: (List<LocalPhoto>) -> Unit,
     onRemovedPhotoClick: (LocalPhoto) -> Unit,
-    onCycleModePickerClick: (PhotoWidgetCycleMode) -> Unit,
-    onShuffleChange: (Boolean) -> Unit,
-    onSortChange: (DirectorySorting) -> Unit,
     onTapActionPickerClick: (PhotoWidgetTapActions) -> Unit,
     onShapeChange: (String) -> Unit,
     onCornerRadiusChange: (Int) -> Unit,
@@ -197,14 +185,6 @@ fun PhotoWidgetConfigureScreen(
             onPhotoClick = onPhotoClick,
             onReorderFinished = onReorderFinished,
             onRemovedPhotoClick = onRemovedPhotoClick,
-            onCycleModePickerClick = onCycleModePickerClick,
-            onShuffleChange = onShuffleChange,
-            onSortClick = {
-                DirectorySortingPicker.show(
-                    context = localContext,
-                    onItemClick = onSortChange,
-                )
-            },
             onTapActionPickerClick = onTapActionPickerClick,
             onShapeChange = onShapeChange,
             onCornerRadiusChange = onCornerRadiusChange,
@@ -252,9 +232,6 @@ private fun PhotoWidgetConfigureContent(
     onPhotoClick: (LocalPhoto) -> Unit,
     onReorderFinished: (List<LocalPhoto>) -> Unit,
     onRemovedPhotoClick: (LocalPhoto) -> Unit,
-    onCycleModePickerClick: (PhotoWidgetCycleMode) -> Unit,
-    onShuffleChange: (Boolean) -> Unit,
-    onSortClick: () -> Unit,
     onTapActionPickerClick: (PhotoWidgetTapActions) -> Unit,
     onShapeChange: (String) -> Unit,
     onCornerRadiusChange: (Int) -> Unit,
@@ -299,9 +276,6 @@ private fun PhotoWidgetConfigureContent(
                     onSaturationChange = onSaturationChange,
                     onBrightnessChange = onBrightnessChange,
                     onPaddingChange = onPaddingChange,
-                    onCycleModePickerClick = onCycleModePickerClick,
-                    onShuffleChange = onShuffleChange,
-                    onSortClick = onSortClick,
                     onTapActionPickerClick = onTapActionPickerClick,
                     onAddToHomeClick = onAddToHomeClick,
                     contentWindowInsets = WindowInsets.navigationBars,
@@ -340,9 +314,6 @@ private fun PhotoWidgetConfigureContent(
                     onSaturationChange = onSaturationChange,
                     onBrightnessChange = onBrightnessChange,
                     onPaddingChange = onPaddingChange,
-                    onCycleModePickerClick = onCycleModePickerClick,
-                    onShuffleChange = onShuffleChange,
-                    onSortClick = onSortClick,
                     onTapActionPickerClick = onTapActionPickerClick,
                     onAddToHomeClick = onAddToHomeClick,
                     contentWindowInsets = WindowInsets.systemBars
@@ -431,9 +402,6 @@ private fun PhotoWidgetEditor(
     onSaturationChange: (Float) -> Unit,
     onBrightnessChange: (Float) -> Unit,
     onPaddingChange: (Int) -> Unit,
-    onCycleModePickerClick: (PhotoWidgetCycleMode) -> Unit,
-    onShuffleChange: (Boolean) -> Unit,
-    onSortClick: () -> Unit,
     onTapActionPickerClick: (PhotoWidgetTapActions) -> Unit,
     onAddToHomeClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -482,16 +450,6 @@ private fun PhotoWidgetEditor(
                         onSaturationChange = onSaturationChange,
                         onBrightnessChange = onBrightnessChange,
                         onPaddingChange = onPaddingChange,
-                        modifier = tabContentModifier,
-                    )
-                }
-
-                ConfigureTab.BEHAVIOR -> {
-                    BehaviorTab(
-                        photoWidget = photoWidget,
-                        onCycleModePickerClick = onCycleModePickerClick,
-                        onShuffleChange = onShuffleChange,
-                        onSortClick = onSortClick,
                         onTapActionPickerClick = onTapActionPickerClick,
                         modifier = tabContentModifier,
                     )
@@ -559,12 +517,24 @@ private fun AppearanceTab(
     onSaturationChange: (Float) -> Unit,
     onBrightnessChange: (Float) -> Unit,
     onPaddingChange: (Int) -> Unit,
+    onTapActionPickerClick: (PhotoWidgetTapActions) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
+        // Tap Action Picker at the top
+        PickerDefault(
+            title = stringResource(id = R.string.widget_defaults_tap_action),
+            currentValue = buildString {
+                appendLine(stringResource(id = photoWidget.tapActions.left.label))
+                appendLine(stringResource(id = photoWidget.tapActions.center.label))
+                appendLine(stringResource(id = photoWidget.tapActions.right.label))
+            },
+            onClick = { onTapActionPickerClick(photoWidget.tapActions) },
+            modifier = Modifier.padding(horizontal = 16.dp),
+        )
 
         if (PhotoWidgetAspectRatio.SQUARE == photoWidget.aspectRatio) {
             InlineShapePicker(
@@ -624,88 +594,6 @@ private fun AppearanceTab(
     }
 }
 
-@Composable
-private fun BehaviorTab(
-    photoWidget: PhotoWidget,
-    onCycleModePickerClick: (PhotoWidgetCycleMode) -> Unit,
-    onShuffleChange: (Boolean) -> Unit,
-    onSortClick: () -> Unit,
-    onTapActionPickerClick: (PhotoWidgetTapActions) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(horizontal = 16.dp),
-    ) {
-        if (photoWidget.photos.size > 1) {
-            PickerDefault(
-                title = stringResource(id = R.string.widget_defaults_cycling),
-                currentValue = when (photoWidget.cycleMode) {
-                    is PhotoWidgetCycleMode.Interval -> {
-                        val intervalString = pluralStringResource(
-                            id = when (photoWidget.cycleMode.loopingInterval.timeUnit) {
-                                TimeUnit.SECONDS -> R.plurals.photo_widget_configure_interval_current_seconds
-                                TimeUnit.MINUTES -> R.plurals.photo_widget_configure_interval_current_minutes
-                                TimeUnit.HOURS -> R.plurals.photo_widget_configure_interval_current_hours
-                                else -> R.plurals.photo_widget_configure_interval_current_days
-                            },
-                            count = photoWidget.cycleMode.loopingInterval.repeatInterval.toInt(),
-                            photoWidget.cycleMode.loopingInterval.repeatInterval,
-                        )
-                        stringResource(id = R.string.photo_widget_configure_interval_current_label, intervalString)
-                    }
-
-                    is PhotoWidgetCycleMode.Schedule -> {
-                        pluralStringResource(
-                            id = R.plurals.photo_widget_configure_schedule_times,
-                            count = photoWidget.cycleMode.triggers.size,
-                            photoWidget.cycleMode.triggers.size,
-                        )
-                    }
-
-                    is PhotoWidgetCycleMode.Disabled -> {
-                        stringResource(id = R.string.photo_widget_configure_cycling_mode_disabled)
-                    }
-                },
-                onClick = { onCycleModePickerClick(photoWidget.cycleMode) },
-            )
-        }
-
-        if (photoWidget.canShuffle) {
-            Spacer(modifier = Modifier.height(12.dp))
-
-            BooleanDefault(
-                title = stringResource(R.string.widget_defaults_shuffle),
-                currentValue = photoWidget.shuffle,
-                onCheckedChange = onShuffleChange,
-            )
-        }
-
-        AnimatedVisibility(
-            visible = PhotoWidgetSource.DIRECTORY == photoWidget.source && !photoWidget.shuffle,
-        ) {
-            PickerDefault(
-                title = stringResource(R.string.photo_widget_directory_sort_title),
-                currentValue = stringResource(id = photoWidget.directorySorting.label),
-                onClick = onSortClick,
-                modifier = Modifier.padding(top = 12.dp),
-            )
-        }
-
-        Spacer(modifier = Modifier.height(12.dp))
-
-        PickerDefault(
-            title = stringResource(id = R.string.widget_defaults_tap_action),
-            currentValue = buildString {
-                appendLine(stringResource(id = photoWidget.tapActions.left.label))
-                appendLine(stringResource(id = photoWidget.tapActions.center.label))
-                appendLine(stringResource(id = photoWidget.tapActions.right.label))
-            },
-            onClick = { onTapActionPickerClick(photoWidget.tapActions) },
-        )
-    }
-}
 // endregion Tabs
 
 // region Components
@@ -1605,9 +1493,6 @@ private fun PhotoWidgetConfigureScreenPreview() {
             onPhotoClick = {},
             onReorderFinished = {},
             onRemovedPhotoClick = {},
-            onCycleModePickerClick = {},
-            onShuffleChange = {},
-            onSortChange = {},
             onTapActionPickerClick = {},
             onShapeChange = {},
             onCornerRadiusChange = {},
@@ -1648,9 +1533,6 @@ private fun PhotoWidgetConfigureScreenTallPreview() {
             onPhotoClick = {},
             onReorderFinished = {},
             onRemovedPhotoClick = {},
-            onCycleModePickerClick = {},
-            onShuffleChange = {},
-            onSortChange = {},
             onTapActionPickerClick = {},
             onShapeChange = {},
             onCornerRadiusChange = {},
