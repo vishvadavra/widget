@@ -106,8 +106,8 @@
     <string name="photo_widget_configure_navigate_back_warning">Any changes will be lost, go back anyway?</string>
     <string name="photo_widget_configure_navigate_back_warning_restore">To finish restoring the widget you must add it to home screen. Exit without restoring?</string>
 
-    <string name="photo_widget_configure_tab_content">Content</string>
-    <string name="photo_widget_configure_tab_appearance">Appearance</string>
+    <string name="photo_widget_configure_tab_content">Photos</string>
+    <string name="photo_widget_configure_tab_appearance">Settings</string>
     <string name="photo_widget_configure_tab_behavior">Behavior</string>
 
     <string name="photo_widget_configure_import_prompt">Import from another widget?</string>

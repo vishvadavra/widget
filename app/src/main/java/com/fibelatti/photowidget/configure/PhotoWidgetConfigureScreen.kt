@@ -120,6 +120,7 @@ import com.epic.widgetwall.ui.LoadingIndicator
 import com.epic.widgetwall.ui.ShapedPhoto
 import com.epic.widgetwall.ui.SliderSmallThumb
 import com.epic.widgetwall.ui.ColoredShape
+import com.epic.widgetwall.ui.GradientButton
 import com.epic.widgetwall.ui.foundation.dpToPx
 import com.epic.widgetwall.ui.foundation.fadingEdges
 import com.epic.widgetwall.ui.preview.AllPreviews
@@ -254,6 +255,7 @@ private fun PhotoWidgetConfigureContent(
                     onRemoveClick = onRemoveClick,
                     onMoveLeftClick = onMoveLeftClick,
                     onMoveRightClick = onMoveRightClick,
+                    onAddPhotoClick = onPhotoPickerClick,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(320.dp),
@@ -291,6 +293,7 @@ private fun PhotoWidgetConfigureContent(
                     onRemoveClick = onRemoveClick,
                     onMoveLeftClick = onMoveLeftClick,
                     onMoveRightClick = onMoveRightClick,
+                    onAddPhotoClick = onPhotoPickerClick,
                     modifier = Modifier
                         .fillMaxHeight()
                         .fillMaxWidth(fraction = 0.4f),
@@ -334,6 +337,7 @@ private fun PhotoWidgetViewer(
     onRemoveClick: (LocalPhoto) -> Unit,
     onMoveLeftClick: (LocalPhoto) -> Unit,
     onMoveRightClick: (LocalPhoto) -> Unit,
+    onAddPhotoClick: () -> Unit,
     modifier: Modifier = Modifier,
     editingControlsInsets: WindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Start),
 ) {
@@ -364,6 +368,24 @@ private fun PhotoWidgetViewer(
             Icon(
                 painter = painterResource(id = R.drawable.ic_back),
                 contentDescription = null,
+            )
+        }
+
+        // Show Add Photo button in center when no photos
+        if (photoWidget.photos.isEmpty()) {
+            GradientButton(
+                text = "Add Photo",
+                onClick = onAddPhotoClick,
+                modifier = Modifier.align(Alignment.Center)
+            )
+        } else {
+            // Show Add More button above photos when photos exist
+            GradientButton(
+                text = "Add More",
+                onClick = onAddPhotoClick,
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .padding(top = 80.dp)
             )
         }
 
@@ -410,7 +432,7 @@ private fun PhotoWidgetEditor(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.background)
+            .background(color = Color.White)
             .windowInsetsPadding(contentWindowInsets),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
@@ -780,126 +802,83 @@ private fun PhotoPicker(
             localHaptics.performHapticFeedback(HapticFeedbackType.SegmentTick)
         }
 
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(count = 5),
-            modifier = Modifier
-                .fillMaxSize()
-                .fadingEdges(scrollState = lazyGridState),
-            state = lazyGridState,
-            contentPadding = PaddingValues(start = 16.dp, top = 68.dp, end = 16.dp, bottom = 200.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            items(currentPhotos, key = { photo -> photo }) { photo ->
-                ReorderableItem(reorderableLazyGridState, key = photo) {
-                    ShapedPhoto(
-                        photo = photo,
-                        aspectRatio = PhotoWidgetAspectRatio.SQUARE,
-                        shapeId = if (PhotoWidgetAspectRatio.SQUARE == aspectRatio) {
-                            shapeId
-                        } else {
-                            PhotoWidget.DEFAULT_SHAPE_ID
-                        },
-                        cornerRadius = PhotoWidget.DEFAULT_CORNER_RADIUS,
-                        modifier = Modifier
-                            .animateItem()
-                            .longPressDraggableHandle(
-                                enabled = canSort,
-                                onDragStarted = {
-                                    localHaptics.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                                },
-                                onDragStopped = {
-                                    onReorderFinished(currentPhotos)
-                                    localHaptics.performHapticFeedback(HapticFeedbackType.GestureEnd)
-                                },
-                            )
-                            .aspectRatio(ratio = 1f)
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = null,
-                                role = Role.Image,
-                                onClick = { onPhotoClick(photo) },
-                            ),
-                    )
+        if (currentPhotos.isEmpty()) {
+            // Empty state when no photos are selected
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(32.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_default),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(64.dp),
+                )
+                Text(
+                    text = "No photos selected",
+                    style = MaterialTheme.typography.headlineSmall,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                    modifier = Modifier.padding(bottom = 16.dp)
+                )
+                Text(
+                    text = "Add photos to create your widget",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f),
+                    modifier = Modifier.padding(bottom = 24.dp)
+                )
+
+            }
+        } else {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(count = 5),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .fadingEdges(scrollState = lazyGridState),
+                state = lazyGridState,
+                contentPadding = PaddingValues(start = 16.dp, top = 68.dp, end = 16.dp, bottom = 200.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                items(currentPhotos, key = { photo -> photo }) { photo ->
+                    ReorderableItem(reorderableLazyGridState, key = photo) {
+                        ShapedPhoto(
+                            photo = photo,
+                            aspectRatio = PhotoWidgetAspectRatio.SQUARE,
+                            shapeId = if (PhotoWidgetAspectRatio.SQUARE == aspectRatio) {
+                                shapeId
+                            } else {
+                                PhotoWidget.DEFAULT_SHAPE_ID
+                            },
+                            cornerRadius = PhotoWidget.DEFAULT_CORNER_RADIUS,
+                            modifier = Modifier
+                                .animateItem()
+                                .longPressDraggableHandle(
+                                    enabled = canSort,
+                                    onDragStarted = {
+                                        localHaptics.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
+                                    },
+                                    onDragStopped = {
+                                        onReorderFinished(currentPhotos)
+                                        localHaptics.performHapticFeedback(HapticFeedbackType.GestureEnd)
+                                    },
+                                )
+                                .aspectRatio(ratio = 1f)
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = null,
+                                    role = Role.Image,
+                                    onClick = { onPhotoClick(photo) },
+                                ),
+                        )
+                    }
                 }
             }
         }
 
-        ButtonGroup(
-            overflowIndicator = {},
-            modifier = Modifier
-                .align(Alignment.TopCenter)
-                .fillMaxWidth()
-                .background(
-                    brush = Brush.verticalGradient(
-                        colorStops = arrayOf(
-                            0f to MaterialTheme.colorScheme.background,
-                            0.8f to MaterialTheme.colorScheme.background.copy(alpha = 0.95f),
-                            1f to Color.Transparent,
-                        ),
-                    ),
-                )
-                .padding(all = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            customItem(
-                buttonGroupContent = {
-                    val interactionSource = remember { MutableInteractionSource() }
 
-                    OutlinedButton(
-                        onClick = {
-                            when (source) {
-                                PhotoWidgetSource.PHOTOS -> onPhotoPickerClick()
-                                PhotoWidgetSource.DIRECTORY -> onDirPickerClick()
-                            }
-                        },
-                        shapes = ButtonDefaults.shapes(),
-                        modifier = Modifier
-                            .weight(1f)
-                            .heightIn(max = 36.dp)
-                            .animateWidth(interactionSource),
-                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 0.dp),
-                        interactionSource = interactionSource,
-                    ) {
-                        AutoSizeText(
-                            text = stringResource(
-                                id = when (source) {
-                                    PhotoWidgetSource.PHOTOS -> R.string.photo_widget_configure_pick_photo
-                                    PhotoWidgetSource.DIRECTORY -> R.string.photo_widget_configure_pick_folder
-                                },
-                            ),
-                            textAlign = TextAlign.Center,
-                            maxLines = 1,
-                        )
-                    }
-                },
-                menuContent = {},
-            )
-
-            customItem(
-                buttonGroupContent = {
-                    val interactionSource = remember { MutableInteractionSource() }
-
-                    OutlinedButton(
-                        onClick = onChangeSource,
-                        shapes = ButtonDefaults.shapes(),
-                        modifier = Modifier
-                            .weight(1f)
-                            .heightIn(max = 36.dp)
-                            .animateWidth(interactionSource),
-                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 0.dp),
-                        interactionSource = interactionSource,
-                    ) {
-                        AutoSizeText(
-                            text = stringResource(R.string.photo_widget_configure_change_source),
-                            textAlign = TextAlign.Center,
-                            maxLines = 1,
-                        )
-                    }
-                },
-                menuContent = {},
-            )
-        }
 
         AnimatedVisibility(
             visible = removedPhotos.isNotEmpty(),

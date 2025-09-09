@@ -44,7 +44,7 @@ inline fun ConfigureTabs(
     tabHeight: Dp = 48.dp,
     tabContent: @Composable (ConfigureTab) -> Unit,
 ) {
-    var selectedTab by remember { mutableStateOf(ConfigureTab.CONTENT) }
+    var selectedTab by remember { mutableStateOf(ConfigureTab.APPEARANCE) }
     val selectedTabIndex by remember { derivedStateOf { ConfigureTab.entries.indexOf(selectedTab) } }
 
     Column(

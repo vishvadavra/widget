@@ -23,12 +23,18 @@ fun GradientButton(
     enabled: Boolean = true,
     isDark: Boolean = false,
 ) {
-    val buttonColor = Color.White
+    val gradientBrush = Brush.linearGradient(
+        colors = listOf(
+            Color(0xFF2A7B9B), // Blue-gray
+            Color(0xFF57C785), // Light green
+            Color(0xFFEDDD53), // Light yellow
+        )
+    )
     
     Box(
         modifier = modifier
             .background(
-                color = buttonColor,
+                brush = gradientBrush,
                 shape = MaterialTheme.shapes.large
             )
             .clickable(
@@ -41,7 +47,7 @@ fun GradientButton(
     ) {
         Text(
             text = text,
-            color = Color(0xFF2A7B9B), // Blue-gray text on white button
+            color = Color.White, // White text on gradient button
             style = MaterialTheme.typography.labelLarge
         )
     }
