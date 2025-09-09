@@ -2,11 +2,13 @@ package com.epic.widgetwall.ui
 
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.dp
 import androidx.core.graphics.toColorInt
 import com.epic.widgetwall.model.LocalPhoto
 import com.epic.widgetwall.model.PhotoWidgetAspectRatio
@@ -50,7 +52,9 @@ fun ShapedPhoto(
         ),
         isLoading = isLoading,
         contentScale = if (aspectRatio.isConstrained) ContentScale.FillWidth else ContentScale.Fit,
-        modifier = modifier.aspectRatio(ratio = aspectRatio.rawAspectRatio),
+        modifier = modifier
+            .size(140.dp) // Increased size for 4-column layout
+            .aspectRatio(ratio = 1f), // Force square aspect ratio
         constraintMode = if (PhotoWidgetAspectRatio.SQUARE == aspectRatio) {
             AsyncPhotoViewer.BitmapSizeConstraintMode.SHAPE
         } else {

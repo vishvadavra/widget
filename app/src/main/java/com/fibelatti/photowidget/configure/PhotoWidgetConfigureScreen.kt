@@ -693,24 +693,7 @@ private fun EditingControls(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        if (showMoveControls) {
-            customItem(
-                buttonGroupContent = {
-                    FilledTonalIconButton(
-                        onClick = onMoveLeftClick,
-                        modifier = Modifier.animateWidth(interactionSources[0]),
-                        interactionSource = interactionSources[0],
-                        enabled = moveLeftEnabled,
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_chevron_left),
-                            contentDescription = stringResource(id = R.string.photo_widget_configure_menu_move_left),
-                        )
-                    }
-                },
-                menuContent = {},
-            )
-        }
+
 
         customItem(
             buttonGroupContent = {
@@ -743,25 +726,6 @@ private fun EditingControls(
             },
             menuContent = {},
         )
-
-        if (showMoveControls) {
-            customItem(
-                buttonGroupContent = {
-                    FilledTonalIconButton(
-                        onClick = onMoveRightClick,
-                        modifier = Modifier.animateWidth(interactionSources[3]),
-                        enabled = moveRightEnabled,
-                        interactionSource = interactionSources[3],
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_chevron_right),
-                            contentDescription = stringResource(id = R.string.photo_widget_configure_menu_move_right),
-                        )
-                    }
-                },
-                menuContent = {},
-            )
-        }
     }
 }
 // endregion Components
@@ -833,14 +797,14 @@ private fun PhotoPicker(
             }
         } else {
             LazyVerticalGrid(
-                columns = GridCells.Fixed(count = 5),
+                columns = GridCells.Fixed(count = 4),
                 modifier = Modifier
                     .fillMaxSize()
                     .fadingEdges(scrollState = lazyGridState),
                 state = lazyGridState,
                 contentPadding = PaddingValues(start = 16.dp, top = 68.dp, end = 16.dp, bottom = 200.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 items(currentPhotos, key = { photo -> photo }) { photo ->
                     ReorderableItem(reorderableLazyGridState, key = photo) {
