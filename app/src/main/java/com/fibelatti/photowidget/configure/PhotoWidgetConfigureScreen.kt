@@ -384,8 +384,8 @@ private fun PhotoWidgetViewer(
                 text = "Add More",
                 onClick = onAddPhotoClick,
                 modifier = Modifier
-                    .align(Alignment.TopCenter)
-                    .padding(top = 80.dp)
+                    .align(Alignment.TopEnd)
+                    .padding(horizontal = 10.dp, vertical = 30.dp)
             )
         }
 

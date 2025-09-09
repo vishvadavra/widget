@@ -257,7 +257,7 @@ class PhotoWidgetConfigureViewModel @Inject constructor(
                 null
             }
 
-            val shouldTriggerCrop = newPhotos.isNotEmpty() && newPhotos.size <= 5
+            val shouldTriggerCrop = false
 
             _state.update { current ->
                 val updatedPhotos = current.photoWidget.photos + newPhotos
