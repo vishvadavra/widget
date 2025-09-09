@@ -23,28 +23,12 @@ fun GradientButton(
     enabled: Boolean = true,
     isDark: Boolean = false,
 ) {
-    val gradientColors = if (isDark) {
-        listOf(
-            Color(0xFF8B6B6B), // Dark pinkish-nude
-            Color(0xFFA67A7A), // Medium dark pinkish-nude
-            Color(0xFFC48B8B), // Light dark pinkish-nude
-        )
-    } else {
-        listOf(
-            Color(0xFFD4A5A5), // Dusty rose pinkish-nude (top)
-            Color(0xFFE8B4B4), // Medium pinkish-nude (middle)
-            Color(0xFFFDF8F8), // Very light cream (bottom)
-        )
-    }
-    
-    val gradientBrush = Brush.verticalGradient(
-        colors = gradientColors
-    )
+    val buttonColor = Color.White
     
     Box(
         modifier = modifier
             .background(
-                brush = gradientBrush,
+                color = buttonColor,
                 shape = MaterialTheme.shapes.large
             )
             .clickable(
@@ -57,7 +41,7 @@ fun GradientButton(
     ) {
         Text(
             text = text,
-            color = if (isDark) Color.White else Color(0xFF2D1B0A),
+            color = Color(0xFF2A7B9B), // Blue-gray text on white button
             style = MaterialTheme.typography.labelLarge
         )
     }

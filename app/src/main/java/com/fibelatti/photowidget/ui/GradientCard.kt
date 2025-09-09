@@ -19,23 +19,7 @@ fun GradientCard(
     isDark: Boolean = false,
     content: @Composable BoxScope.() -> Unit,
 ) {
-    val gradientColors = if (isDark) {
-        listOf(
-            Color(0xFF2A1A1A), // Dark pinkish-nude card
-            Color(0xFF4A2A2A), // Medium dark pinkish-nude
-            Color(0xFF6B4A4A), // Light dark pinkish-nude
-        )
-    } else {
-        listOf(
-            Color(0xFFD4A5A5), // Dusty rose pinkish-nude (top)
-            Color(0xFFE8B4B4), // Medium pinkish-nude (middle)
-            Color(0xFFFDF8F8), // Very light cream (bottom)
-        )
-    }
-    
-    val gradientBrush = Brush.verticalGradient(
-        colors = gradientColors
-    )
+    val cardColor = Color.White
     
     Card(
         modifier = modifier,
@@ -50,7 +34,7 @@ fun GradientCard(
         Box(
             modifier = Modifier
                 .background(
-                    brush = gradientBrush,
+                    color = cardColor,
                     shape = MaterialTheme.shapes.large
                 )
                 .padding(20.dp),

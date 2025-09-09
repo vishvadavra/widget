@@ -26,15 +26,15 @@ fun GradientBackground(
     
     val gradientColors = if (isDark) {
         listOf(
-            Color(0xFF1A0F0F), // Very dark pinkish-nude
-            Color(0xFF2A1A1A), // Dark pinkish-nude
-            Color(0xFF4A2A2A), // Medium dark pinkish-nude
+            Color(0xFF1A2A3A), // Dark blue-gray
+            Color(0xFF2A4A3A), // Dark green
+            Color(0xFF4A4A2A), // Dark yellow
         )
     } else {
         listOf(
-            Color(0xFFFDF8F8), // Very light cream
-            Color(0xFFF9F0F0), // Light pinkish-nude
-            Color(0xFFF7E7E7), // Medium light pinkish-nude
+            Color(0xFF2A7B9B), // Blue-gray
+            Color(0xFF57C785), // Light green
+            Color(0xFFEDDD53), // Light yellow
         )
     }
     

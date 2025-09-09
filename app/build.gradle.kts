@@ -15,7 +15,7 @@ plugins {
 
 object AppInfo {
 
-    const val APP_NAME = "Epic Widget Wall"
+    const val APP_NAME = "Widget Wall"
     const val APPLICATION_ID = "com.epic.widgetwall"
 
     private const val VERSION_MAJOR = 1
@@ -110,7 +110,7 @@ android {
         onVariants { variant ->
             val appName = StringBuilder().apply {
                 append(AppInfo.APP_NAME)
-                if (variant.name.contains("debug", ignoreCase = true)) append(" Dev")
+                if (variant.name.contains("debug", ignoreCase = true)) append("")
             }.toString()
 
             variant.resValues.put(

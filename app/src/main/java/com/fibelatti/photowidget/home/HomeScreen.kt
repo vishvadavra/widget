@@ -25,11 +25,12 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.epic.widgetwall.ui.GradientBackground
 import com.epic.widgetwall.ui.GradientFloatingActionButton
+import com.epic.widgetwall.ui.GradientTopAppBar
 import com.epic.widgetwall.R
 import com.epic.widgetwall.model.PhotoWidget
 import com.epic.widgetwall.model.PhotoWidgetAspectRatio
@@ -64,11 +65,12 @@ fun HomeScreen(
     Scaffold(
         modifier = modifier,
         topBar = {
-            TopAppBar(
+            GradientTopAppBar(
                 title = {
                     Text(
                         text = "Photo Widgets",
-                        style = MaterialTheme.typography.headlineSmall
+                        style = MaterialTheme.typography.headlineSmall,
+                        color = Color.White
                     )
                 },
                 actions = {
@@ -79,15 +81,10 @@ fun HomeScreen(
                         Icon(
                             painter = painterResource(R.drawable.ic_settings),
                             contentDescription = stringResource(R.string.photo_widget_home_settings),
-                            tint = MaterialTheme.colorScheme.onSurface
+                            tint = Color.White
                         )
                     }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.surface,
-                    titleContentColor = MaterialTheme.colorScheme.onSurface,
-                    actionIconContentColor = MaterialTheme.colorScheme.onSurface
-                )
+                }
             )
         },
         floatingActionButton = {
@@ -95,27 +92,24 @@ fun HomeScreen(
                 onClick = {
                     // Create new widget with default square aspect ratio
                     onCreateNewWidgetClick(PhotoWidgetAspectRatio.SQUARE)
-                }
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_new_widget),
-                    contentDescription = stringResource(R.string.photo_widget_home_new),
-                    tint = MaterialTheme.colorScheme.onPrimary
-                )
-            }
+                },
+                iconRes = R.drawable.outline_add_2_24,
+                contentDescription = stringResource(R.string.photo_widget_home_new)
+            )
         },
         contentWindowInsets = WindowInsets.safeDrawing,
     ) { paddingValues ->
-        GradientBackground(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
+                .background(Color.White)
                 .padding(paddingValues)
         ) {
             // Filter to show only photo widgets (no tabs)
-            val photoWidgets = currentWidgets.filter { (_, widget) -> 
-                widget.source == com.epic.widgetwall.model.PhotoWidgetSource.PHOTOS 
+            val photoWidgets = currentWidgets.filter { (_, widget) ->
+                widget.source == com.epic.widgetwall.model.PhotoWidgetSource.PHOTOS
             }
-            
+
             MyWidgetsScreen(
                 widgets = photoWidgets,
                 onCurrentWidgetClick = onCurrentWidgetClick,

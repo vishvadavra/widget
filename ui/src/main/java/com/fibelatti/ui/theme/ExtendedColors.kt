@@ -7,75 +7,75 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 
 internal val LightColorScheme = lightColorScheme(
-    primary = Color(0xFFD4A5A5), // Dusty rose pinkish-nude
+    primary = Color(0xFF2A7B9B), // Blue-gray from gradient
     onPrimary = Color(0xFFFFFFFF),
-    primaryContainer = Color(0xFFF7E7E7), // Light pinkish-nude
-    onPrimaryContainer = Color(0xFF2D1B0A),
+    primaryContainer = Color(0xFFFFFFFF), // White container
+    onPrimaryContainer = Color(0xFF2A7B9B),
 
-    secondary = Color(0xFFE8B4B4), // Medium pinkish-nude
+    secondary = Color(0xFF57C785), // Light green from gradient
     onSecondary = Color(0xFFFFFFFF),
-    secondaryContainer = Color(0xFFF9F0F0), // Very light pinkish-nude
-    onSecondaryContainer = Color(0xFF2D1B0A),
+    secondaryContainer = Color(0xFFFFFFFF), // White container
+    onSecondaryContainer = Color(0xFF57C785),
 
-    tertiary = Color(0xFFF0C4C4), // Soft pinkish-nude
-    onTertiary = Color(0xFFFFFFFF),
-    tertiaryContainer = Color(0xFFFDF8F8), // Cream pinkish-nude
-    onTertiaryContainer = Color(0xFF2D1B0A),
+    tertiary = Color(0xFFEDDD53), // Light yellow from gradient
+    onTertiary = Color(0xFF2A7B9B),
+    tertiaryContainer = Color(0xFFFFFFFF), // White container
+    onTertiaryContainer = Color(0xFFEDDD53),
 
     error = Color(0xFFD2691E), // Warm error color
     errorContainer = Color(0xFFFFE4D1),
     onError = Color(0xFFFFFFFF),
     onErrorContainer = Color(0xFF5D2C0A),
 
-    background = Color(0xFFFDF8F8), // Very light cream background
-    onBackground = Color(0xFF2D1B0A),
+    background = Color(0xFF2A7B9B), // Blue-gray background (will be overridden by gradient)
+    onBackground = Color(0xFFFFFFFF),
 
-    surface = Color(0xFFFDF8F8), // Very light cream surface
-    onSurface = Color(0xFF2D1B0A),
-    surfaceVariant = Color(0xFFF9F0F0), // Light pinkish-nude variant
-    onSurfaceVariant = Color(0xFF5D4A3A),
+    surface = Color(0xFFFFFFFF), // White surface for cards
+    onSurface = Color(0xFF2A7B9B),
+    surfaceVariant = Color(0xFFFFFFFF), // White surface variant
+    onSurfaceVariant = Color(0xFF2A7B9B),
 
-    outline = Color(0xFFD4A5A5), // Pinkish-nude outline
-    outlineVariant = Color(0xFFE8B4B4),
+    outline = Color(0xFF2A7B9B), // Blue-gray outline
+    outlineVariant = Color(0xFF57C785),
 
-    inverseSurface = Color(0xFF2D1B0A),
-    inverseOnSurface = Color(0xFFF9F0F0),
-    inversePrimary = Color(0xFFE8B4B4),
+    inverseSurface = Color(0xFF2A7B9B),
+    inverseOnSurface = Color(0xFFFFFFFF),
+    inversePrimary = Color(0xFF57C785),
 )
 
 internal val DarkColorScheme = darkColorScheme(
-    primary = Color(0xFFE8B4B4), // Light pinkish-nude for dark theme
-    onPrimary = Color(0xFF2D1B0A),
-    primaryContainer = Color(0xFF8B6B6B), // Dark pinkish-nude container
-    onPrimaryContainer = Color(0xFFF9F0F0),
+    primary = Color(0xFF57C785), // Light green for dark theme
+    onPrimary = Color(0xFF1A2A3A),
+    primaryContainer = Color(0xFFFFFFFF), // White container
+    onPrimaryContainer = Color(0xFF2A7B9B),
 
-    secondary = Color(0xFFF0C4C4), // Medium light pinkish-nude
-    onSecondary = Color(0xFF2D1B0A),
-    secondaryContainer = Color(0xFF6B4A4A), // Dark pinkish-nude secondary
-    onSecondaryContainer = Color(0xFFF7E7E7),
+    secondary = Color(0xFFEDDD53), // Light yellow
+    onSecondary = Color(0xFF1A2A3A),
+    secondaryContainer = Color(0xFFFFFFFF), // White container
+    onSecondaryContainer = Color(0xFF57C785),
 
-    tertiary = Color(0xFFF5D4D4), // Soft light pinkish-nude
-    onTertiary = Color(0xFF2D1B0A),
-    tertiaryContainer = Color(0xFF4A2A2A), // Dark pinkish-nude tertiary
-    onTertiaryContainer = Color(0xFFFDF8F8),
+    tertiary = Color(0xFF2A7B9B), // Blue-gray
+    onTertiary = Color(0xFFFFFFFF),
+    tertiaryContainer = Color(0xFFFFFFFF), // White container
+    onTertiaryContainer = Color(0xFFEDDD53),
 
     error = Color(0xFFFFB4AB),
     errorContainer = Color(0xFF8B4513), // Dark error
-    onError = Color(0xFF2D1B0A),
+    onError = Color(0xFF1A2A3A),
     onErrorContainer = Color(0xFFFFE4D1),
 
-    background = Color(0xFF1A0F0F), // Very dark pinkish-nude background
-    onBackground = Color(0xFFF9F0F0),
+    background = Color(0xFF1A2A3A), // Dark blue-gray background (will be overridden by gradient)
+    onBackground = Color(0xFFFFFFFF),
 
-    surface = Color(0xFF1A0F0F), // Very dark pinkish-nude surface
-    onSurface = Color(0xFFF9F0F0),
-    surfaceVariant = Color(0xFF2A1A1A), // Dark pinkish-nude variant
-    onSurfaceVariant = Color(0xFFE8B4B4),
+    surface = Color(0xFFFFFFFF), // White surface for cards
+    onSurface = Color(0xFF1A2A3A),
+    surfaceVariant = Color(0xFFFFFFFF), // White surface variant
+    onSurfaceVariant = Color(0xFF1A2A3A),
 
-    outline = Color(0xFFD4A5A5), // Pinkish-nude outline
-    outlineVariant = Color(0xFF6B4A4A),
+    outline = Color(0xFF2A7B9B), // Blue-gray outline
+    outlineVariant = Color(0xFF57C785),
 
-    inverseSurface = Color(0xFFF9F0F0),
-    inverseOnSurface = Color(0xFF1A0F0F),
-    inversePrimary = Color(0xFFD4A5A5),
+    inverseSurface = Color(0xFFFFFFFF),
+    inverseOnSurface = Color(0xFF1A2A3A),
+    inversePrimary = Color(0xFF57C785),
 )
