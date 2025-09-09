@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -14,13 +14,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.di.PhotoWidgetEntryPoint
-import com.fibelatti.photowidget.di.entryPoint
-import com.fibelatti.photowidget.model.LocalPhoto
-import com.fibelatti.photowidget.model.getPhotoPath
-import com.fibelatti.photowidget.platform.PhotoDecoder
-import com.fibelatti.photowidget.platform.getMaxBitmapWidgetDimension
+import com.epic.widgetwall.R
+import com.epic.widgetwall.di.PhotoWidgetEntryPoint
+import com.epic.widgetwall.di.entryPoint
+import com.epic.widgetwall.model.LocalPhoto
+import com.epic.widgetwall.model.getPhotoPath
+import com.epic.widgetwall.platform.PhotoDecoder
+import com.epic.widgetwall.platform.getMaxBitmapWidgetDimension
 
 @SuppressLint("ComposeCompositionLocalUsage")
 val LocalSamplePhoto = staticCompositionLocalOf<LocalPhoto?> { null }

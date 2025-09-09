@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.platform
+package com.epic.widgetwall.platform
 
 import androidx.appcompat.app.AppCompatDialog
 import androidx.lifecycle.LifecycleOwner

@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.widget
+package com.epic.widgetwall.widget
 
 import android.content.Context
 import androidx.hilt.work.HiltWorker
@@ -8,8 +8,8 @@ import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
-import com.fibelatti.photowidget.model.PhotoWidgetSource
-import com.fibelatti.photowidget.widget.data.PhotoWidgetStorage
+import com.epic.widgetwall.model.PhotoWidgetSource
+import com.epic.widgetwall.widget.data.PhotoWidgetStorage
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import java.time.Duration

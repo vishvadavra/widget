@@ -1,10 +1,10 @@
-package com.fibelatti.photowidget.preferences
+package com.epic.widgetwall.preferences
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.fibelatti.photowidget.platform.AppTheme
+import com.epic.widgetwall.platform.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -1,4 +1,4 @@
-package com.fibelatti.ui.preview
+package com.epic.widgetwall.ui.preview
 
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview

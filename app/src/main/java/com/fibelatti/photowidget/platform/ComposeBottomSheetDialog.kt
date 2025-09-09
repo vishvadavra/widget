@@ -1,11 +1,11 @@
-package com.fibelatti.photowidget.platform
+package com.epic.widgetwall.platform
 
 import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.unit.dp
-import com.fibelatti.photowidget.R
+import com.epic.widgetwall.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 

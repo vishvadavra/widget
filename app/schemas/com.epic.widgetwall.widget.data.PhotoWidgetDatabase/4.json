@@ -23,20 +23,17 @@
           {
             "fieldPath": "croppedPhotoPath",
             "columnName": "croppedPhotoPath",
-            "affinity": "TEXT",
-            "notNull": false
+            "affinity": "TEXT"
           },
           {
             "fieldPath": "originalPhotoPath",
             "columnName": "originalPhotoPath",
-            "affinity": "TEXT",
-            "notNull": false
+            "affinity": "TEXT"
           },
           {
             "fieldPath": "externalUri",
             "columnName": "externalUri",
-            "affinity": "TEXT",
-            "notNull": false
+            "affinity": "TEXT"
           },
           {
             "fieldPath": "timestamp",
@@ -51,9 +48,7 @@
             "widgetId",
             "photoId"
           ]
-        },
-        "indices": [],
-        "foreignKeys": []
+        }
       },
       {
         "tableName": "displayed_widget_photos",
@@ -84,9 +79,7 @@
             "widgetId",
             "photoId"
           ]
-        },
-        "indices": [],
-        "foreignKeys": []
+        }
       },
       {
         "tableName": "photo_widget_order",
@@ -117,9 +110,7 @@
             "widgetId",
             "photoId"
           ]
-        },
-        "indices": [],
-        "foreignKeys": []
+        }
       },
       {
         "tableName": "pending_deletion_widget_photos",
@@ -150,9 +141,7 @@
             "widgetId",
             "photoId"
           ]
-        },
-        "indices": [],
-        "foreignKeys": []
+        }
       },
       {
         "tableName": "excluded_widget_photos",
@@ -177,12 +166,9 @@
             "widgetId",
             "photoId"
           ]
-        },
-        "indices": [],
-        "foreignKeys": []
+        }
       }
     ],
-    "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
       "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7f562f9e2e2d9396143ee6950fced313')"

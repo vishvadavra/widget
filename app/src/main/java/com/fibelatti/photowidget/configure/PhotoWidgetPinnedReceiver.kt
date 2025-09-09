@@ -1,13 +1,13 @@
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import android.appwidget.AppWidgetManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.fibelatti.photowidget.di.PhotoWidgetEntryPoint
-import com.fibelatti.photowidget.platform.EntryPointBroadcastReceiver
-import com.fibelatti.photowidget.widget.PhotoWidgetProvider
+import com.epic.widgetwall.di.PhotoWidgetEntryPoint
+import com.epic.widgetwall.platform.EntryPointBroadcastReceiver
+import com.epic.widgetwall.widget.PhotoWidgetProvider
 import timber.log.Timber
 
 /**

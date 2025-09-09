@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import android.content.Context
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,9 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.model.DirectorySorting
-import com.fibelatti.photowidget.platform.SelectionDialog
+import com.epic.widgetwall.R
+import com.epic.widgetwall.model.DirectorySorting
+import com.epic.widgetwall.platform.SelectionDialog
 
 object DirectorySortingPicker {
 

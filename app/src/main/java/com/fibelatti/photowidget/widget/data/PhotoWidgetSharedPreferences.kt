@@ -1,23 +1,23 @@
-package com.fibelatti.photowidget.widget.data
+package com.epic.widgetwall.widget.data
 
 import android.content.Context
 import android.net.Uri
 import androidx.core.content.edit
-import com.fibelatti.photowidget.model.DirectorySorting
-import com.fibelatti.photowidget.model.LegacyPhotoWidgetLoopingInterval
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetBorder
-import com.fibelatti.photowidget.model.PhotoWidgetCycleMode
-import com.fibelatti.photowidget.model.PhotoWidgetLoopingInterval
-import com.fibelatti.photowidget.model.PhotoWidgetSource
-import com.fibelatti.photowidget.model.PhotoWidgetTapAction
-import com.fibelatti.photowidget.model.TapActionArea
-import com.fibelatti.photowidget.model.Time
-import com.fibelatti.photowidget.model.minutesToLoopingInterval
-import com.fibelatti.photowidget.model.repeatIntervalAsSeconds
-import com.fibelatti.photowidget.model.secondsToLoopingInterval
-import com.fibelatti.photowidget.platform.enumValueOfOrNull
-import com.fibelatti.photowidget.preferences.UserPreferencesStorage
+import com.epic.widgetwall.model.DirectorySorting
+import com.epic.widgetwall.model.LegacyPhotoWidgetLoopingInterval
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetBorder
+import com.epic.widgetwall.model.PhotoWidgetCycleMode
+import com.epic.widgetwall.model.PhotoWidgetLoopingInterval
+import com.epic.widgetwall.model.PhotoWidgetSource
+import com.epic.widgetwall.model.PhotoWidgetTapAction
+import com.epic.widgetwall.model.TapActionArea
+import com.epic.widgetwall.model.Time
+import com.epic.widgetwall.model.minutesToLoopingInterval
+import com.epic.widgetwall.model.repeatIntervalAsSeconds
+import com.epic.widgetwall.model.secondsToLoopingInterval
+import com.epic.widgetwall.platform.enumValueOfOrNull
+import com.epic.widgetwall.preferences.UserPreferencesStorage
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.math.roundToInt
@@ -617,6 +617,6 @@ class PhotoWidgetSharedPreferences @Inject constructor(
 
     private companion object {
 
-        const val SHARED_PREFERENCES_NAME = "com.fibelatti.photowidget.PhotoWidget"
+        const val SHARED_PREFERENCES_NAME = "com.epic.widgetwall.PhotoWidget"
     }
 }

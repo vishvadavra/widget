@@ -1,7 +1,7 @@
-package com.fibelatti.photowidget.home
+package com.epic.widgetwall.home
 
 import androidx.annotation.StringRes
-import com.fibelatti.photowidget.R
+import com.epic.widgetwall.R
 
 data class HelpArticle(
     @StringRes val title: Int,

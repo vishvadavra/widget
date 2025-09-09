@@ -1,4 +1,4 @@
-package com.fibelatti.ui.foundation
+package com.epic.widgetwall.ui.foundation
 
 import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -12,7 +12,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import com.fibelatti.ui.text.AutoSizeText
+import com.epic.widgetwall.ui.text.AutoSizeText
 
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)

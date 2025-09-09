@@ -1,4 +1,4 @@
-package com.fibelatti.ui.preview
+package com.epic.widgetwall.ui.preview
 
 @ThemePreviews
 @LocalePreviews

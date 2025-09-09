@@ -1,23 +1,23 @@
-package com.fibelatti.photowidget.widget
+package com.epic.widgetwall.widget
 
 import android.content.Context
 import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Size
 import androidx.core.graphics.toColorInt
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetBorder
-import com.fibelatti.photowidget.model.borderPercent
-import com.fibelatti.photowidget.model.getPhotoPath
-import com.fibelatti.photowidget.platform.PhotoDecoder
-import com.fibelatti.photowidget.platform.colorForType
-import com.fibelatti.photowidget.platform.getColorPalette
-import com.fibelatti.photowidget.platform.getDynamicAttributeColor
-import com.fibelatti.photowidget.platform.getMaxBitmapWidgetDimension
-import com.fibelatti.photowidget.platform.withPolygonalShape
-import com.fibelatti.photowidget.platform.withRoundedCorners
-import com.fibelatti.photowidget.widget.data.PhotoWidgetInternalFileStorage
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetBorder
+import com.epic.widgetwall.model.borderPercent
+import com.epic.widgetwall.model.getPhotoPath
+import com.epic.widgetwall.platform.PhotoDecoder
+import com.epic.widgetwall.platform.colorForType
+import com.epic.widgetwall.platform.getColorPalette
+import com.epic.widgetwall.platform.getDynamicAttributeColor
+import com.epic.widgetwall.platform.getMaxBitmapWidgetDimension
+import com.epic.widgetwall.platform.withPolygonalShape
+import com.epic.widgetwall.platform.withRoundedCorners
+import com.epic.widgetwall.widget.data.PhotoWidgetInternalFileStorage
 import javax.inject.Inject
 import timber.log.Timber
 

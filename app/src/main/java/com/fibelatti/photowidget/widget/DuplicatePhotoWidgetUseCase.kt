@@ -1,8 +1,8 @@
-package com.fibelatti.photowidget.widget
+package com.epic.widgetwall.widget
 
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetSource
-import com.fibelatti.photowidget.widget.data.PhotoWidgetStorage
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetSource
+import com.epic.widgetwall.widget.data.PhotoWidgetStorage
 import javax.inject.Inject
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.last

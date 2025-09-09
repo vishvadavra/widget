@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -43,13 +43,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.platform.withRoundedCorners
-import com.fibelatti.photowidget.preferences.DefaultPicker
-import com.fibelatti.ui.foundation.dpToPx
-import com.fibelatti.ui.preview.AllPreviews
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.R
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.platform.withRoundedCorners
+import com.epic.widgetwall.preferences.DefaultPicker
+import com.epic.widgetwall.ui.foundation.dpToPx
+import com.epic.widgetwall.ui.preview.AllPreviews
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 
 @Composable
 fun PhotoWidgetOffsetPicker(

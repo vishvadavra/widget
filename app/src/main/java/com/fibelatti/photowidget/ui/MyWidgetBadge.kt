@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.ui
+package com.epic.widgetwall.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
@@ -22,10 +23,24 @@ fun MyWidgetBadge(
     contentColor: Color,
     modifier: Modifier = Modifier,
     icon: Painter? = null,
+    useGradient: Boolean = true,
 ) {
+    val gradientBrush = if (useGradient) {
+        Brush.linearGradient(
+            colors = listOf(
+                backgroundColor,
+                backgroundColor.copy(alpha = 0.8f),
+                backgroundColor.copy(alpha = 0.6f)
+            )
+        )
+    } else null
+    
     Row(
         modifier = modifier
-            .background(color = backgroundColor, shape = MaterialTheme.shapes.large)
+            .background(
+                brush = gradientBrush ?: Brush.linearGradient(listOf(backgroundColor)),
+                shape = MaterialTheme.shapes.large
+            )
             .padding(horizontal = 12.dp, vertical = 4.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically,

@@ -1,6 +1,6 @@
 @file:Suppress("Unused")
 
-package com.fibelatti.photowidget.platform
+package com.epic.widgetwall.platform
 
 import android.app.Activity
 import android.content.Intent

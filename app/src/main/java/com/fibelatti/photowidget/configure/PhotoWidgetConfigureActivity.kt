@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -22,17 +22,17 @@ import androidx.compose.runtime.getValue
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.configure.PhotoCropActivity.Companion.outputPath
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetCycleMode
-import com.fibelatti.photowidget.model.PhotoWidgetSource
-import com.fibelatti.photowidget.model.PhotoWidgetTapActions
-import com.fibelatti.photowidget.platform.AppTheme
-import com.fibelatti.photowidget.platform.RememberedEffect
-import com.fibelatti.photowidget.platform.setIdentifierCompat
-import com.fibelatti.photowidget.widget.PhotoWidgetProvider
+import com.epic.widgetwall.R
+import com.epic.widgetwall.configure.PhotoCropActivity.Companion.outputPath
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetCycleMode
+import com.epic.widgetwall.model.PhotoWidgetSource
+import com.epic.widgetwall.model.PhotoWidgetTapActions
+import com.epic.widgetwall.platform.AppTheme
+import com.epic.widgetwall.platform.RememberedEffect
+import com.epic.widgetwall.platform.setIdentifierCompat
+import com.epic.widgetwall.widget.PhotoWidgetProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint

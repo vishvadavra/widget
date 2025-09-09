@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.home
+package com.epic.widgetwall.home
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -28,12 +28,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetStatus
-import com.fibelatti.ui.preview.AllPreviews
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.ui.GradientBackground
+import com.epic.widgetwall.ui.GradientFloatingActionButton
+import com.epic.widgetwall.R
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetStatus
+import com.epic.widgetwall.ui.preview.AllPreviews
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -65,7 +67,7 @@ fun HomeScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = stringResource(R.string.photo_widget_home_current),
+                        text = "Photo Widgets",
                         style = MaterialTheme.typography.headlineSmall
                     )
                 },
@@ -89,13 +91,11 @@ fun HomeScreen(
             )
         },
         floatingActionButton = {
-            FloatingActionButton(
+            GradientFloatingActionButton(
                 onClick = {
                     // Create new widget with default square aspect ratio
                     onCreateNewWidgetClick(PhotoWidgetAspectRatio.SQUARE)
-                },
-                containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = MaterialTheme.colorScheme.onPrimary
+                }
             ) {
                 Icon(
                     painter = painterResource(R.drawable.ic_new_widget),
@@ -106,14 +106,18 @@ fun HomeScreen(
         },
         contentWindowInsets = WindowInsets.safeDrawing,
     ) { paddingValues ->
-        Box(
+        GradientBackground(
             modifier = Modifier
-                .background(color = MaterialTheme.colorScheme.background)
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
+            // Filter to show only photo widgets (no tabs)
+            val photoWidgets = currentWidgets.filter { (_, widget) -> 
+                widget.source == com.epic.widgetwall.model.PhotoWidgetSource.PHOTOS 
+            }
+            
             MyWidgetsScreen(
-                widgets = currentWidgets,
+                widgets = photoWidgets,
                 onCurrentWidgetClick = onCurrentWidgetClick,
                 onRemovedWidgetClick = onRemovedWidgetClick,
                 modifier = Modifier.fillMaxSize()

@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.fibelatti.photowidget.preferences
+package com.epic.widgetwall.preferences
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateColorAsState
@@ -75,32 +75,32 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.configure.DirectorySortingPicker
-import com.fibelatti.photowidget.configure.PhotoWidgetAspectRatioPicker
-import com.fibelatti.photowidget.configure.PhotoWidgetBrightnessPicker
-import com.fibelatti.photowidget.configure.PhotoWidgetCycleModePicker
-import com.fibelatti.photowidget.configure.PhotoWidgetSaturationPicker
-import com.fibelatti.photowidget.configure.rememberSampleBitmap
-import com.fibelatti.photowidget.model.DirectorySorting
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetColors
-import com.fibelatti.photowidget.model.PhotoWidgetCycleMode
-import com.fibelatti.photowidget.model.PhotoWidgetShapeBuilder
-import com.fibelatti.photowidget.model.PhotoWidgetSource
-import com.fibelatti.photowidget.platform.ComposeBottomSheetDialog
-import com.fibelatti.photowidget.platform.SelectionDialog
-import com.fibelatti.photowidget.platform.formatPercent
-import com.fibelatti.photowidget.platform.formatRangeValue
-import com.fibelatti.photowidget.platform.withRoundedCorners
-import com.fibelatti.photowidget.ui.ColoredShape
-import com.fibelatti.photowidget.ui.SliderSmallThumb
-import com.fibelatti.ui.foundation.dpToPx
-import com.fibelatti.ui.preview.AllPreviews
-import com.fibelatti.ui.preview.ThemePreviews
-import com.fibelatti.ui.text.AutoSizeText
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.R
+import com.epic.widgetwall.configure.DirectorySortingPicker
+import com.epic.widgetwall.configure.PhotoWidgetAspectRatioPicker
+import com.epic.widgetwall.configure.PhotoWidgetBrightnessPicker
+import com.epic.widgetwall.configure.PhotoWidgetCycleModePicker
+import com.epic.widgetwall.configure.PhotoWidgetSaturationPicker
+import com.epic.widgetwall.configure.rememberSampleBitmap
+import com.epic.widgetwall.model.DirectorySorting
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetColors
+import com.epic.widgetwall.model.PhotoWidgetCycleMode
+import com.epic.widgetwall.model.PhotoWidgetShapeBuilder
+import com.epic.widgetwall.model.PhotoWidgetSource
+import com.epic.widgetwall.platform.ComposeBottomSheetDialog
+import com.epic.widgetwall.platform.SelectionDialog
+import com.epic.widgetwall.platform.formatPercent
+import com.epic.widgetwall.platform.formatRangeValue
+import com.epic.widgetwall.platform.withRoundedCorners
+import com.epic.widgetwall.ui.ColoredShape
+import com.epic.widgetwall.ui.SliderSmallThumb
+import com.epic.widgetwall.ui.foundation.dpToPx
+import com.epic.widgetwall.ui.preview.AllPreviews
+import com.epic.widgetwall.ui.preview.ThemePreviews
+import com.epic.widgetwall.ui.text.AutoSizeText
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 

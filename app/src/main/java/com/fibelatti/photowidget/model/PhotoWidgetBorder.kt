@@ -1,8 +1,8 @@
-package com.fibelatti.photowidget.model
+package com.epic.widgetwall.model
 
 import android.os.Parcelable
 import androidx.annotation.StringRes
-import com.fibelatti.photowidget.R
+import com.epic.widgetwall.R
 import com.google.android.material.color.DynamicColors
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize

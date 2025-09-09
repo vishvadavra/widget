@@ -1,9 +1,9 @@
-package com.fibelatti.photowidget.backup
+package com.epic.widgetwall.backup
 
 import android.content.Context
 import android.net.Uri
-import com.fibelatti.photowidget.model.LocalPhoto
-import com.fibelatti.photowidget.model.PhotoWidget
+import com.epic.widgetwall.model.LocalPhoto
+import com.epic.widgetwall.model.PhotoWidget
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import java.io.InputStream

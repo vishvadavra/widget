@@ -1,10 +1,10 @@
-package com.fibelatti.photowidget.platform
+package com.epic.widgetwall.platform
 
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import com.fibelatti.photowidget.di.PhotoWidgetEntryPoint
-import com.fibelatti.photowidget.widget.PhotoWidgetProvider
+import com.epic.widgetwall.di.PhotoWidgetEntryPoint
+import com.epic.widgetwall.widget.PhotoWidgetProvider
 import timber.log.Timber
 
 class ConfigurationChangedReceiver : EntryPointBroadcastReceiver() {

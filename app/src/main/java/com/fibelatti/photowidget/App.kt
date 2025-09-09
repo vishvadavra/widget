@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget
+package com.epic.widgetwall
 
 import android.app.Application
 import android.os.StrictMode
@@ -7,12 +7,12 @@ import androidx.compose.runtime.Composer
 import androidx.compose.runtime.ExperimentalComposeRuntimeApi
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
-import com.fibelatti.photowidget.platform.ConfigurationChangedReceiver
-import com.fibelatti.photowidget.preferences.Appearance
-import com.fibelatti.photowidget.preferences.UserPreferencesStorage
-import com.fibelatti.photowidget.widget.DeleteStaleDataUseCase
-import com.fibelatti.photowidget.widget.PhotoWidgetRescheduleWorker
-import com.fibelatti.photowidget.widget.PhotoWidgetSyncWorker
+import com.epic.widgetwall.platform.ConfigurationChangedReceiver
+import com.epic.widgetwall.preferences.Appearance
+import com.epic.widgetwall.preferences.UserPreferencesStorage
+import com.epic.widgetwall.widget.DeleteStaleDataUseCase
+import com.epic.widgetwall.widget.PhotoWidgetRescheduleWorker
+import com.epic.widgetwall.widget.PhotoWidgetSyncWorker
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.color.DynamicColorsOptions
 import dagger.hilt.android.HiltAndroidApp

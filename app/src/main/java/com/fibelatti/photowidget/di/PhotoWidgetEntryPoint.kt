@@ -1,14 +1,14 @@
-package com.fibelatti.photowidget.di
+package com.epic.widgetwall.di
 
-import com.fibelatti.photowidget.configure.PhotoWidgetPinningCache
-import com.fibelatti.photowidget.configure.SavePhotoWidgetUseCase
-import com.fibelatti.photowidget.platform.PhotoDecoder
-import com.fibelatti.photowidget.preferences.UserPreferencesStorage
-import com.fibelatti.photowidget.widget.CyclePhotoUseCase
-import com.fibelatti.photowidget.widget.LoadPhotoWidgetUseCase
-import com.fibelatti.photowidget.widget.PhotoWidgetAlarmManager
-import com.fibelatti.photowidget.widget.PrepareCurrentPhotoUseCase
-import com.fibelatti.photowidget.widget.data.PhotoWidgetStorage
+import com.epic.widgetwall.configure.PhotoWidgetPinningCache
+import com.epic.widgetwall.configure.SavePhotoWidgetUseCase
+import com.epic.widgetwall.platform.PhotoDecoder
+import com.epic.widgetwall.preferences.UserPreferencesStorage
+import com.epic.widgetwall.widget.CyclePhotoUseCase
+import com.epic.widgetwall.widget.LoadPhotoWidgetUseCase
+import com.epic.widgetwall.widget.PhotoWidgetAlarmManager
+import com.epic.widgetwall.widget.PrepareCurrentPhotoUseCase
+import com.epic.widgetwall.widget.data.PhotoWidgetStorage
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent

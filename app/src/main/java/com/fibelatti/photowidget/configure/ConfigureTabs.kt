@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Box
@@ -23,11 +23,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.fibelatti.photowidget.R
-import com.fibelatti.ui.preview.LocalePreviews
-import com.fibelatti.ui.preview.ThemePreviews
-import com.fibelatti.ui.text.AutoSizeText
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.R
+import com.epic.widgetwall.ui.preview.LocalePreviews
+import com.epic.widgetwall.ui.preview.ThemePreviews
+import com.epic.widgetwall.ui.text.AutoSizeText
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 
 enum class ConfigureTab(
     @StringRes val title: Int,

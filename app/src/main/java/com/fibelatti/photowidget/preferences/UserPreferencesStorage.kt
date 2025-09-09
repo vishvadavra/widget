@@ -1,18 +1,18 @@
-package com.fibelatti.photowidget.preferences
+package com.epic.widgetwall.preferences
 
 import android.content.Context
 import androidx.core.content.edit
-import com.fibelatti.photowidget.model.DirectorySorting
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetCycleMode
-import com.fibelatti.photowidget.model.PhotoWidgetLoopingInterval
-import com.fibelatti.photowidget.model.PhotoWidgetSource
-import com.fibelatti.photowidget.model.Time
-import com.fibelatti.photowidget.model.minutesToLoopingInterval
-import com.fibelatti.photowidget.model.repeatIntervalAsSeconds
-import com.fibelatti.photowidget.model.secondsToLoopingInterval
-import com.fibelatti.photowidget.platform.enumValueOfOrNull
+import com.epic.widgetwall.model.DirectorySorting
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetCycleMode
+import com.epic.widgetwall.model.PhotoWidgetLoopingInterval
+import com.epic.widgetwall.model.PhotoWidgetSource
+import com.epic.widgetwall.model.Time
+import com.epic.widgetwall.model.minutesToLoopingInterval
+import com.epic.widgetwall.model.repeatIntervalAsSeconds
+import com.epic.widgetwall.model.secondsToLoopingInterval
+import com.epic.widgetwall.platform.enumValueOfOrNull
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -342,6 +342,6 @@ class UserPreferencesStorage @Inject constructor(@ApplicationContext context: Co
 
     private companion object {
 
-        const val SHARED_PREFERENCES_NAME = "com.fibelatti.photowidget.UserPreferences"
+        const val SHARED_PREFERENCES_NAME = "com.epic.widgetwall.UserPreferences"
     }
 }

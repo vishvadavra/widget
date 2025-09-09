@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.platform
+package com.epic.widgetwall.platform
 
 import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
@@ -17,10 +17,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.fibelatti.photowidget.R
-import com.fibelatti.ui.foundation.TextWithLinks
-import com.fibelatti.ui.preview.AllPreviews
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.R
+import com.epic.widgetwall.ui.foundation.TextWithLinks
+import com.epic.widgetwall.ui.preview.AllPreviews
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 
 object BackgroundRestrictedSheetDialog {
 

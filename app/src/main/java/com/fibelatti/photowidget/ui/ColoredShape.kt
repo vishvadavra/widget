@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.ui
+package com.epic.widgetwall.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asComposePath
-import com.fibelatti.photowidget.model.PhotoWidgetShapeBuilder
+import com.epic.widgetwall.model.PhotoWidgetShapeBuilder
 
 @Composable
 fun ColoredShape(

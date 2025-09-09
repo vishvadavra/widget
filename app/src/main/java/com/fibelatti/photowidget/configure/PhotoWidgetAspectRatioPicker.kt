@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
@@ -12,10 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.home.AspectRatioPicker
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.platform.ComposeBottomSheetDialog
+import com.epic.widgetwall.R
+import com.epic.widgetwall.home.AspectRatioPicker
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.platform.ComposeBottomSheetDialog
 
 object PhotoWidgetAspectRatioPicker {
 

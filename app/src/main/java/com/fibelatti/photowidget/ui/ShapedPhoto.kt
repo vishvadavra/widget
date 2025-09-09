@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.ui
+package com.epic.widgetwall.ui
 
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.aspectRatio
@@ -8,18 +8,18 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.core.graphics.toColorInt
-import com.fibelatti.photowidget.model.LocalPhoto
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetBorder
-import com.fibelatti.photowidget.model.PhotoWidgetColors
-import com.fibelatti.photowidget.model.borderPercent
-import com.fibelatti.photowidget.model.getPhotoPath
-import com.fibelatti.photowidget.model.rawAspectRatio
-import com.fibelatti.photowidget.platform.colorForType
-import com.fibelatti.photowidget.platform.getColorPalette
-import com.fibelatti.photowidget.platform.getDynamicAttributeColor
-import com.fibelatti.photowidget.platform.withPolygonalShape
-import com.fibelatti.photowidget.platform.withRoundedCorners
+import com.epic.widgetwall.model.LocalPhoto
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetBorder
+import com.epic.widgetwall.model.PhotoWidgetColors
+import com.epic.widgetwall.model.borderPercent
+import com.epic.widgetwall.model.getPhotoPath
+import com.epic.widgetwall.model.rawAspectRatio
+import com.epic.widgetwall.platform.colorForType
+import com.epic.widgetwall.platform.getColorPalette
+import com.epic.widgetwall.platform.getDynamicAttributeColor
+import com.epic.widgetwall.platform.withPolygonalShape
+import com.epic.widgetwall.platform.withRoundedCorners
 
 @Composable
 fun ShapedPhoto(

@@ -133,7 +133,7 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-                <action android:name="com.fibelatti.photowidget.action.RESCHEDULE" />
+                <action android:name="com.epic.widgetwall.action.RESCHEDULE" />
             </intent-filter>
         </receiver>
 

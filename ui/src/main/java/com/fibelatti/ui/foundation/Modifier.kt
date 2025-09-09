@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.fibelatti.ui.foundation
+package com.epic.widgetwall.ui.foundation
 
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.gestures.ScrollableState

@@ -1,4 +1,4 @@
-package com.fibelatti.ui.foundation
+package com.epic.widgetwall.ui.foundation
 
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.updateTransition
@@ -37,11 +37,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.fibelatti.ui.R
-import com.fibelatti.ui.foundation.ToggleButtonGroup.SquareCorner
-import com.fibelatti.ui.preview.ThemePreviews
-import com.fibelatti.ui.text.AutoSizeText
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.ui.R
+import com.epic.widgetwall.ui.foundation.ToggleButtonGroup.SquareCorner
+import com.epic.widgetwall.ui.preview.ThemePreviews
+import com.epic.widgetwall.ui.text.AutoSizeText
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 
 @Composable
 fun ColumnToggleButtonGroup(

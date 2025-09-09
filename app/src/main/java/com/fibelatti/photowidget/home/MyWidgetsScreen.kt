@@ -1,8 +1,7 @@
-package com.fibelatti.photowidget.home
+package com.epic.widgetwall.home
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalSharedTransitionApi
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -15,7 +14,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -23,43 +21,35 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
-import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
-import androidx.compose.material3.ToggleButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.role
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.model.LocalPhoto
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetColors
-import com.fibelatti.photowidget.model.PhotoWidgetShapeBuilder
-import com.fibelatti.photowidget.model.PhotoWidgetSource
-import com.fibelatti.photowidget.model.PhotoWidgetStatus
-import com.fibelatti.photowidget.model.isWidgetRemoved
-import com.fibelatti.photowidget.model.photoCycleEnabled
-import com.fibelatti.photowidget.ui.ColoredShape
-import com.fibelatti.photowidget.ui.MyWidgetBadge
-import com.fibelatti.photowidget.ui.ShapedPhoto
-import com.fibelatti.photowidget.ui.WarningSign
-import com.fibelatti.ui.preview.AllPreviews
-import com.fibelatti.ui.text.AutoSizeText
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.R
+import com.epic.widgetwall.model.LocalPhoto
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetColors
+import com.epic.widgetwall.model.PhotoWidgetShapeBuilder
+import com.epic.widgetwall.model.PhotoWidgetSource
+import com.epic.widgetwall.model.PhotoWidgetStatus
+import com.epic.widgetwall.model.isWidgetRemoved
+import com.epic.widgetwall.model.photoCycleEnabled
+import com.epic.widgetwall.ui.ColoredShape
+import com.epic.widgetwall.ui.MyWidgetBadge
+import com.epic.widgetwall.ui.ShapedPhoto
+import com.epic.widgetwall.ui.WarningSign
+import com.epic.widgetwall.ui.preview.AllPreviews
+import com.epic.widgetwall.ui.text.AutoSizeText
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class, ExperimentalSharedTransitionApi::class)
@@ -75,19 +65,13 @@ fun MyWidgetsScreen(
     ) {
         val maxWidth = maxWidth
 
-        val options = listOf(null, PhotoWidgetSource.PHOTOS, PhotoWidgetSource.DIRECTORY)
-        var selectedSource: PhotoWidgetSource? by remember { mutableStateOf(null) }
-        val filteredWidgets: List<Pair<Int, PhotoWidget>> by remember(widgets) {
-            derivedStateOf {
-                widgets.filter { selectedSource == null || it.second.source == selectedSource }
-            }
-        }
+        // No filtering needed - showing all widgets passed in
         val hasDeletedWidgets = remember(widgets) {
-            filteredWidgets.any { it.second.status.isWidgetRemoved }
+            widgets.any { it.second.status.isWidgetRemoved }
         }
 
         AnimatedContent(
-            targetState = filteredWidgets,
+            targetState = widgets,
             transitionSpec = {
                 fadeIn(animationSpec = tween(300, delayMillis = 90))
                     .plus(scaleIn(initialScale = 0.92f, animationSpec = tween(300, delayMillis = 90)))
@@ -167,14 +151,15 @@ fun MyWidgetsScreen(
                     verticalArrangement = Arrangement.spacedBy(32.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    ColoredShape(
-                        shapeId = remember { PhotoWidgetShapeBuilder.shapes.random().id },
-                        color = MaterialTheme.colorScheme.primaryContainer,
-                        modifier = Modifier.size(120.dp),
+                    Icon(
+                        painter = painterResource(R.drawable.ic_default),
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(64.dp),
                     )
 
                     Text(
-                        text = stringResource(id = R.string.photo_widget_home_empty_widgets),
+                        text = "Your photo widgets will appear here. Add your first photo to get started, then customize shape, border, and style to make it yours.",
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         textAlign = TextAlign.Center,
                         style = MaterialTheme.typography.bodyLarge,
@@ -183,36 +168,7 @@ fun MyWidgetsScreen(
             }
         }
 
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(all = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(ButtonGroupDefaults.ConnectedSpaceBetween),
-        ) {
-            options.forEachIndexed { index, source ->
-                val weight by animateFloatAsState(
-                    targetValue = if (selectedSource == source) 1.5f else 1f,
-                )
-
-                ToggleButton(
-                    checked = selectedSource == source,
-                    onCheckedChange = { selectedSource = source },
-                    modifier = Modifier
-                        .weight(weight)
-                        .semantics { role = Role.RadioButton },
-                    shapes = when (index) {
-                        0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
-                        options.lastIndex -> ButtonGroupDefaults.connectedTrailingButtonShapes()
-                        else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
-                    },
-                ) {
-                    AutoSizeText(
-                        text = stringResource(source?.label ?: R.string.photo_widget_home_filter_all),
-                        maxLines = 1,
-                    )
-                }
-            }
-        }
+        // Tabs removed - only showing photos
 
         if (hasDeletedWidgets) {
             WarningSign(

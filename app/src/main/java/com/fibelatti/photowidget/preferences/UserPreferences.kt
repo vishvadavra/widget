@@ -1,9 +1,9 @@
-package com.fibelatti.photowidget.preferences
+package com.epic.widgetwall.preferences
 
-import com.fibelatti.photowidget.model.DirectorySorting
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetCycleMode
-import com.fibelatti.photowidget.model.PhotoWidgetSource
+import com.epic.widgetwall.model.DirectorySorting
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetCycleMode
+import com.epic.widgetwall.model.PhotoWidgetSource
 
 data class UserPreferences(
     val dataSaver: Boolean,

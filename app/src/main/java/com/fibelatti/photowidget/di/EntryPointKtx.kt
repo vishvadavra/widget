@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.di
+package com.epic.widgetwall.di
 
 import android.content.Context
 import dagger.hilt.android.EntryPointAccessors

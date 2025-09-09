@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.fibelatti.photowidget.ui
+package com.epic.widgetwall.ui
 
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,8 +9,8 @@ import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialShapes
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.fibelatti.ui.preview.AllPreviews
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.ui.preview.AllPreviews
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 
 @Composable
 fun LoadingIndicator(

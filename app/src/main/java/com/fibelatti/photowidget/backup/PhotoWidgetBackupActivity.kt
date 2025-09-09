@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.backup
+package com.epic.widgetwall.backup
 
 import android.content.Context
 import android.content.Intent
@@ -12,10 +12,10 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.configure.PhotoWidgetConfigureActivity
-import com.fibelatti.photowidget.platform.AppTheme
-import com.fibelatti.photowidget.platform.RememberedEffect
+import com.epic.widgetwall.R
+import com.epic.widgetwall.configure.PhotoWidgetConfigureActivity
+import com.epic.widgetwall.platform.AppTheme
+import com.epic.widgetwall.platform.RememberedEffect
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File

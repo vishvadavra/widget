@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.platform
+package com.epic.widgetwall.platform
 
 import java.text.NumberFormat
 import java.util.Locale

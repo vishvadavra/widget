@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.fibelatti.photowidget.home
+package com.epic.widgetwall.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -47,18 +47,19 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetShapeBuilder
-import com.fibelatti.photowidget.model.rawAspectRatio
-import com.fibelatti.photowidget.platform.isBackgroundRestricted
-import com.fibelatti.photowidget.ui.ColoredShape
-import com.fibelatti.photowidget.ui.ShapesBanner
-import com.fibelatti.photowidget.ui.WarningSign
-import com.fibelatti.ui.foundation.fadingEdges
-import com.fibelatti.ui.preview.AllPreviews
-import com.fibelatti.ui.text.AutoSizeText
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.R
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetShapeBuilder
+import com.epic.widgetwall.model.rawAspectRatio
+import com.epic.widgetwall.platform.isBackgroundRestricted
+import com.epic.widgetwall.ui.ColoredShape
+import com.epic.widgetwall.ui.GradientBackground
+import com.epic.widgetwall.ui.ShapesBanner
+import com.epic.widgetwall.ui.WarningSign
+import com.epic.widgetwall.ui.foundation.fadingEdges
+import com.epic.widgetwall.ui.preview.AllPreviews
+import com.epic.widgetwall.ui.text.AutoSizeText
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 
 @Composable
 fun NewWidgetScreen(
@@ -72,10 +73,13 @@ fun NewWidgetScreen(
     val localContext = LocalContext.current
     val localInspectionMode = LocalInspectionMode.current
 
-    Box(
+    GradientBackground(
         modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
     ) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center,
+        ) {
         ShapesBanner(
             modifier = Modifier
                 .align(Alignment.TopCenter)
@@ -143,6 +147,7 @@ fun NewWidgetScreen(
                     onDismissClick = onDismissWarningClick,
                 )
             }
+        }
         }
     }
 }

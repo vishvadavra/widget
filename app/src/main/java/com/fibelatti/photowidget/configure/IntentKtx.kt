@@ -1,11 +1,11 @@
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.net.Uri
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.platform.intentExtras
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.platform.intentExtras
 
 var Intent.appWidgetId: Int by intentExtras(
     key = AppWidgetManager.EXTRA_APPWIDGET_ID,

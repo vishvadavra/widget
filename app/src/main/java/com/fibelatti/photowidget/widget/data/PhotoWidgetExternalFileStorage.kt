@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.widget.data
+package com.epic.widgetwall.widget.data
 
 import android.content.ContentResolver
 import android.content.Context
@@ -6,8 +6,8 @@ import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
 import android.provider.DocumentsContract
-import com.fibelatti.photowidget.model.DirectorySorting
-import com.fibelatti.photowidget.model.LocalPhoto
+import com.epic.widgetwall.model.DirectorySorting
+import com.epic.widgetwall.model.LocalPhoto
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers

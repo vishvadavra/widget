@@ -1,10 +1,10 @@
-package com.fibelatti.photowidget.platform
+package com.epic.widgetwall.platform
 
 import android.graphics.Bitmap
 import android.graphics.Color
 import androidx.annotation.ColorInt
 import androidx.palette.graphics.Palette
-import com.fibelatti.photowidget.model.PhotoWidgetBorder
+import com.epic.widgetwall.model.PhotoWidgetBorder
 
 class ColorPalette(
     @ColorInt val dominantColor: Int,

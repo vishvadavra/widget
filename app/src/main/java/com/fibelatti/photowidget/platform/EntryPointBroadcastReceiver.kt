@@ -1,12 +1,12 @@
-package com.fibelatti.photowidget.platform
+package com.epic.widgetwall.platform
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
-import com.fibelatti.photowidget.di.PhotoWidgetEntryPoint
-import com.fibelatti.photowidget.di.entryPoint
+import com.epic.widgetwall.di.PhotoWidgetEntryPoint
+import com.epic.widgetwall.di.entryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
 

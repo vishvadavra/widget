@@ -1,81 +1,81 @@
 @file:Suppress("Unused")
 
-package com.fibelatti.ui.theme
+package com.epic.widgetwall.ui.theme
 
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 
 internal val LightColorScheme = lightColorScheme(
-    primary = Color(0xFF186D28),
+    primary = Color(0xFFD4A5A5), // Dusty rose pinkish-nude
     onPrimary = Color(0xFFFFFFFF),
-    primaryContainer = Color(0xFFA2F6A0),
-    onPrimaryContainer = Color(0xFF002105),
+    primaryContainer = Color(0xFFF7E7E7), // Light pinkish-nude
+    onPrimaryContainer = Color(0xFF2D1B0A),
 
-    secondary = Color(0xFF52634F),
+    secondary = Color(0xFFE8B4B4), // Medium pinkish-nude
     onSecondary = Color(0xFFFFFFFF),
-    secondaryContainer = Color(0xFFD5E8CF),
-    onSecondaryContainer = Color(0xFF101F10),
+    secondaryContainer = Color(0xFFF9F0F0), // Very light pinkish-nude
+    onSecondaryContainer = Color(0xFF2D1B0A),
 
-    tertiary = Color(0xFF39656B),
+    tertiary = Color(0xFFF0C4C4), // Soft pinkish-nude
     onTertiary = Color(0xFFFFFFFF),
-    tertiaryContainer = Color(0xFFBCEBF1),
-    onTertiaryContainer = Color(0xFF001F23),
+    tertiaryContainer = Color(0xFFFDF8F8), // Cream pinkish-nude
+    onTertiaryContainer = Color(0xFF2D1B0A),
 
-    error = Color(0xFFBA1A1A),
-    errorContainer = Color(0xFFFFDAD6),
+    error = Color(0xFFD2691E), // Warm error color
+    errorContainer = Color(0xFFFFE4D1),
     onError = Color(0xFFFFFFFF),
-    onErrorContainer = Color(0xFF410002),
+    onErrorContainer = Color(0xFF5D2C0A),
 
-    background = Color(0xFFFCFDF6),
-    onBackground = Color(0xFF1A1C19),
+    background = Color(0xFFFDF8F8), // Very light cream background
+    onBackground = Color(0xFF2D1B0A),
 
-    surface = Color(0xFFFCFDF6),
-    onSurface = Color(0xFF1A1C19),
-    surfaceVariant = Color(0xFFDEE5D9),
-    onSurfaceVariant = Color(0xFF424940),
+    surface = Color(0xFFFDF8F8), // Very light cream surface
+    onSurface = Color(0xFF2D1B0A),
+    surfaceVariant = Color(0xFFF9F0F0), // Light pinkish-nude variant
+    onSurfaceVariant = Color(0xFF5D4A3A),
 
-    outline = Color(0xFF72796F),
-    outlineVariant = Color(0xFFC2C9BD),
+    outline = Color(0xFFD4A5A5), // Pinkish-nude outline
+    outlineVariant = Color(0xFFE8B4B4),
 
-    inverseSurface = Color(0xFF2F312D),
-    inverseOnSurface = Color(0xFFF0F1EB),
-    inversePrimary = Color(0xFF86D986),
+    inverseSurface = Color(0xFF2D1B0A),
+    inverseOnSurface = Color(0xFFF9F0F0),
+    inversePrimary = Color(0xFFE8B4B4),
 )
 
 internal val DarkColorScheme = darkColorScheme(
-    primary = Color(0xFF86D986),
-    onPrimary = Color(0xFF00390D),
-    primaryContainer = Color(0xFF005317),
-    onPrimaryContainer = Color(0xFFA2F6A0),
+    primary = Color(0xFFE8B4B4), // Light pinkish-nude for dark theme
+    onPrimary = Color(0xFF2D1B0A),
+    primaryContainer = Color(0xFF8B6B6B), // Dark pinkish-nude container
+    onPrimaryContainer = Color(0xFFF9F0F0),
 
-    secondary = Color(0xFFB9CCB4),
-    onSecondary = Color(0xFF253423),
-    secondaryContainer = Color(0xFF3B4B39),
-    onSecondaryContainer = Color(0xFFD5E8CF),
+    secondary = Color(0xFFF0C4C4), // Medium light pinkish-nude
+    onSecondary = Color(0xFF2D1B0A),
+    secondaryContainer = Color(0xFF6B4A4A), // Dark pinkish-nude secondary
+    onSecondaryContainer = Color(0xFFF7E7E7),
 
-    tertiary = Color(0xFFA1CED5),
-    onTertiary = Color(0xFF00363C),
-    tertiaryContainer = Color(0xFF1F4D53),
-    onTertiaryContainer = Color(0xFFBCEBF1),
+    tertiary = Color(0xFFF5D4D4), // Soft light pinkish-nude
+    onTertiary = Color(0xFF2D1B0A),
+    tertiaryContainer = Color(0xFF4A2A2A), // Dark pinkish-nude tertiary
+    onTertiaryContainer = Color(0xFFFDF8F8),
 
     error = Color(0xFFFFB4AB),
-    errorContainer = Color(0xFF93000A),
-    onError = Color(0xFF690005),
-    onErrorContainer = Color(0xFFFFDAD6),
+    errorContainer = Color(0xFF8B4513), // Dark error
+    onError = Color(0xFF2D1B0A),
+    onErrorContainer = Color(0xFFFFE4D1),
 
-    background = Color(0xFF1A1C19),
-    onBackground = Color(0xFFE2E3DD),
+    background = Color(0xFF1A0F0F), // Very dark pinkish-nude background
+    onBackground = Color(0xFFF9F0F0),
 
-    surface = Color(0xFF1A1C19),
-    onSurface = Color(0xFFE2E3DD),
-    surfaceVariant = Color(0xFF424940),
-    onSurfaceVariant = Color(0xFFC2C9BD),
+    surface = Color(0xFF1A0F0F), // Very dark pinkish-nude surface
+    onSurface = Color(0xFFF9F0F0),
+    surfaceVariant = Color(0xFF2A1A1A), // Dark pinkish-nude variant
+    onSurfaceVariant = Color(0xFFE8B4B4),
 
-    outline = Color(0xFF8C9388),
-    outlineVariant = Color(0xFF424940),
+    outline = Color(0xFFD4A5A5), // Pinkish-nude outline
+    outlineVariant = Color(0xFF6B4A4A),
 
-    inverseSurface = Color(0xFFE2E3DD),
-    inverseOnSurface = Color(0xFF1A1C19),
-    inversePrimary = Color(0xFF186D28),
+    inverseSurface = Color(0xFFF9F0F0),
+    inverseOnSurface = Color(0xFF1A0F0F),
+    inversePrimary = Color(0xFFD4A5A5),
 )

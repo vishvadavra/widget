@@ -1,15 +1,15 @@
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetBorder
-import com.fibelatti.photowidget.model.PhotoWidgetSource
-import com.fibelatti.photowidget.model.PhotoWidgetTapAction
-import com.fibelatti.photowidget.model.TapActionArea
-import com.fibelatti.photowidget.model.canShuffle
-import com.fibelatti.photowidget.model.photoCycleEnabled
-import com.fibelatti.photowidget.widget.PhotoWidgetAlarmManager
-import com.fibelatti.photowidget.widget.data.PhotoWidgetStorage
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetBorder
+import com.epic.widgetwall.model.PhotoWidgetSource
+import com.epic.widgetwall.model.PhotoWidgetTapAction
+import com.epic.widgetwall.model.TapActionArea
+import com.epic.widgetwall.model.canShuffle
+import com.epic.widgetwall.model.photoCycleEnabled
+import com.epic.widgetwall.widget.PhotoWidgetAlarmManager
+import com.epic.widgetwall.widget.data.PhotoWidgetStorage
 import javax.inject.Inject
 import timber.log.Timber
 

@@ -1,4 +1,4 @@
-package com.fibelatti.ui.imageviewer
+package com.epic.widgetwall.ui.imageviewer
 
 import androidx.compose.animation.core.AnimationScope
 import androidx.compose.animation.core.AnimationState

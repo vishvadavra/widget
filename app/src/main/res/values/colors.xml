@@ -2,9 +2,19 @@
 <resources>
     <!-- Only colors that change depending on the configuration should be defined here
     everything else should be follow the style and use the query syntax (?attr/) -->
-    <color name="color_background">#FFFFFF</color>
+    <color name="color_background">#FDF8F8</color>
 
-    <color name="color_icon">#424242</color>
+    <color name="color_icon">#D4A5A5</color>
 
-    <color name="ic_launcher_background">#00390D</color>
+    <color name="ic_launcher_background">#D4A5A5</color>
+    
+    <!-- Pinkish-nude gradient colors -->
+    <color name="nude_primary">#D4A5A5</color>
+    <color name="nude_secondary">#E8B4B4</color>
+    <color name="nude_tertiary">#F0C4C4</color>
+    <color name="nude_light">#F7E7E7</color>
+    <color name="nude_cream">#FDF8F8</color>
+    <color name="nude_soft">#F9F0F0</color>
+    <color name="nude_dark">#2D1B0A</color>
+    <color name="nude_medium">#5D4A3A</color>
 </resources>

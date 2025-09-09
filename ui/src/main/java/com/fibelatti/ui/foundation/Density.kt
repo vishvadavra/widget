@@ -1,6 +1,6 @@
 @file:Suppress("Unused")
 
-package com.fibelatti.ui.foundation
+package com.epic.widgetwall.ui.foundation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalDensity

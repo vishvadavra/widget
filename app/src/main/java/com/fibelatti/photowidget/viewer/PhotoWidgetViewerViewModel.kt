@@ -1,15 +1,15 @@
-package com.fibelatti.photowidget.viewer
+package com.epic.widgetwall.viewer
 
 import android.appwidget.AppWidgetManager
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.tapActionKeepCurrentPhoto
-import com.fibelatti.photowidget.model.tapActionNoShuffle
-import com.fibelatti.photowidget.platform.savedState
-import com.fibelatti.photowidget.widget.CyclePhotoUseCase
-import com.fibelatti.photowidget.widget.LoadPhotoWidgetUseCase
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.tapActionKeepCurrentPhoto
+import com.epic.widgetwall.model.tapActionNoShuffle
+import com.epic.widgetwall.platform.savedState
+import com.epic.widgetwall.widget.CyclePhotoUseCase
+import com.epic.widgetwall.widget.LoadPhotoWidgetUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Job

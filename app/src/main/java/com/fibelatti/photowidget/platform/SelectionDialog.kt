@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.platform
+package com.epic.widgetwall.platform
 
 import android.content.Context
 import androidx.compose.foundation.layout.Arrangement

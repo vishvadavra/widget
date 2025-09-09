@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.ui
+package com.epic.widgetwall.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -12,12 +12,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import com.fibelatti.photowidget.R
+import com.epic.widgetwall.R
 
 @Composable
 fun WarningSign(
@@ -30,7 +31,13 @@ fun WarningSign(
     Column(
         modifier = modifier
             .background(
-                color = Color(0xFFFFE57F),
+                brush = Brush.linearGradient(
+                    colors = listOf(
+                        Color(0xFFD2691E).copy(alpha = 0.2f), // Warm nude warning
+                        Color(0xFF8B6F47).copy(alpha = 0.15f), // Primary nude
+                        Color(0xFFA68B6B).copy(alpha = 0.1f) // Tertiary nude
+                    )
+                ),
                 shape = MaterialTheme.shapes.medium,
             )
             .padding(vertical = 8.dp, horizontal = 16.dp),
@@ -43,12 +50,12 @@ fun WarningSign(
             Icon(
                 painter = painterResource(R.drawable.ic_warning),
                 contentDescription = null,
-                tint = Color.Black,
+                tint = MaterialTheme.colorScheme.onSurface,
             )
 
             Text(
                 text = text,
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.onSurface,
                 style = MaterialTheme.typography.bodySmall,
             )
         }
@@ -62,7 +69,7 @@ fun WarningSign(
                         onClick = onDismissClick,
                         role = Role.Button,
                     ),
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.onSurface,
                 style = MaterialTheme.typography.labelSmall,
             )
         }

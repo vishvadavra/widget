@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import com.fibelatti.photowidget.R
+import com.epic.widgetwall.R
 
 @Composable
 fun ExactAlarmsDialog(

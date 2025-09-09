@@ -1,6 +1,6 @@
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
-import com.fibelatti.photowidget.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidget
 import javax.inject.Inject
 import javax.inject.Singleton
 

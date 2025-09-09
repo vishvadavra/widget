@@ -1,7 +1,7 @@
 /**
  * See the original implementation at https://github.com/0xZhangKe/ImageViewer/.
  */
-package com.fibelatti.ui.imageviewer
+package com.epic.widgetwall.ui.imageviewer
 
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -27,8 +27,8 @@ import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Velocity
-import com.fibelatti.ui.foundation.detectZoom
-import com.fibelatti.ui.foundation.pxToDp
+import com.epic.widgetwall.ui.foundation.detectZoom
+import com.epic.widgetwall.ui.foundation.pxToDp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

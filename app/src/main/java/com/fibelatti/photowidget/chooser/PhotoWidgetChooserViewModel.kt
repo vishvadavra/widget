@@ -1,14 +1,14 @@
-package com.fibelatti.photowidget.chooser
+package com.epic.widgetwall.chooser
 
 import android.appwidget.AppWidgetManager
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fibelatti.photowidget.model.LocalPhoto
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.platform.savedState
-import com.fibelatti.photowidget.widget.LoadPhotoWidgetUseCase
-import com.fibelatti.photowidget.widget.data.PhotoWidgetStorage
+import com.epic.widgetwall.model.LocalPhoto
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.platform.savedState
+import com.epic.widgetwall.widget.LoadPhotoWidgetUseCase
+import com.epic.widgetwall.widget.data.PhotoWidgetStorage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted

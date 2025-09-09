@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.ui
+package com.epic.widgetwall.ui
 
 import android.content.Context
 import android.content.res.Resources
@@ -28,12 +28,12 @@ import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.max
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.di.PhotoWidgetEntryPoint
-import com.fibelatti.photowidget.di.entryPoint
-import com.fibelatti.photowidget.platform.PhotoDecoder
-import com.fibelatti.photowidget.platform.getMaxBitmapWidgetDimension
-import com.fibelatti.ui.foundation.dpToPx
+import com.epic.widgetwall.R
+import com.epic.widgetwall.di.PhotoWidgetEntryPoint
+import com.epic.widgetwall.di.entryPoint
+import com.epic.widgetwall.platform.PhotoDecoder
+import com.epic.widgetwall.platform.getMaxBitmapWidgetDimension
+import com.epic.widgetwall.ui.foundation.dpToPx
 import kotlin.math.roundToInt
 import kotlinx.coroutines.delay
 

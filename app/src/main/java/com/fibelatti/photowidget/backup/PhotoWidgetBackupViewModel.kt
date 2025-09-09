@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.backup
+package com.epic.widgetwall.backup
 
 import android.content.Context
 import android.net.Uri
@@ -7,7 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fibelatti.photowidget.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidget
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File

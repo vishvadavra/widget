@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import android.content.Context
 import androidx.compose.foundation.clickable
@@ -26,15 +26,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.home.HomeViewModel
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetStatus
-import com.fibelatti.photowidget.model.isWidgetRemoved
-import com.fibelatti.photowidget.platform.ComposeBottomSheetDialog
-import com.fibelatti.photowidget.platform.RememberedEffect
-import com.fibelatti.photowidget.ui.MyWidgetBadge
-import com.fibelatti.photowidget.ui.ShapedPhoto
+import com.epic.widgetwall.R
+import com.epic.widgetwall.home.HomeViewModel
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetStatus
+import com.epic.widgetwall.model.isWidgetRemoved
+import com.epic.widgetwall.platform.ComposeBottomSheetDialog
+import com.epic.widgetwall.platform.RememberedEffect
+import com.epic.widgetwall.ui.MyWidgetBadge
+import com.epic.widgetwall.ui.ShapedPhoto
 
 object ExistingWidgetPicker {
 

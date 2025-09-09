@@ -1,9 +1,9 @@
-package com.fibelatti.photowidget.widget
+package com.epic.widgetwall.widget
 
 import android.content.Context
 import android.content.Intent
-import com.fibelatti.photowidget.di.PhotoWidgetEntryPoint
-import com.fibelatti.photowidget.platform.EntryPointBroadcastReceiver
+import com.epic.widgetwall.di.PhotoWidgetEntryPoint
+import com.epic.widgetwall.platform.EntryPointBroadcastReceiver
 import timber.log.Timber
 
 class PhotoWidgetRescheduleReceiver : EntryPointBroadcastReceiver() {
@@ -25,10 +25,10 @@ class PhotoWidgetRescheduleReceiver : EntryPointBroadcastReceiver() {
 
     companion object {
 
-        private const val ACTION_RESCHEDULE = "com.fibelatti.photowidget.action.RESCHEDULE"
+        private const val ACTION_RESCHEDULE = "com.epic.widgetwall.action.RESCHEDULE"
 
         fun intent(context: Context): Intent = Intent(ACTION_RESCHEDULE).apply {
-            setClassName(context.packageName, "com.fibelatti.photowidget.widget.PhotoWidgetRescheduleReceiver")
+            setClassName(context.packageName, "com.epic.widgetwall.widget.PhotoWidgetRescheduleReceiver")
         }
     }
 }

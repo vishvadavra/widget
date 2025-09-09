@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.backup
+package com.epic.widgetwall.backup
 
 import java.io.File
 import java.io.FileInputStream

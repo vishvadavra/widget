@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.fibelatti.photowidget.home
+package com.epic.widgetwall.home
 
 import android.app.AlarmManager
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -51,14 +51,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.app.AlarmManagerCompat
 import androidx.core.content.getSystemService
-import com.fibelatti.photowidget.BuildConfig
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.configure.ExactAlarmsDialog
-import com.fibelatti.photowidget.platform.requestScheduleExactAlarmIntent
-import com.fibelatti.photowidget.widget.PhotoWidgetRescheduleReceiver
-import com.fibelatti.ui.preview.AllPreviews
-import com.fibelatti.ui.text.AutoSizeText
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.BuildConfig
+import com.epic.widgetwall.R
+import com.epic.widgetwall.configure.ExactAlarmsDialog
+import com.epic.widgetwall.platform.requestScheduleExactAlarmIntent
+import com.epic.widgetwall.widget.PhotoWidgetRescheduleReceiver
+import com.epic.widgetwall.ui.preview.AllPreviews
+import com.epic.widgetwall.ui.text.AutoSizeText
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 import com.google.android.material.color.DynamicColors
 
 @Composable

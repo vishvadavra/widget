@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.home
+package com.epic.widgetwall.home
 
 import android.content.Intent
 import android.net.Uri
@@ -26,26 +26,26 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.ShareCompat
 import androidx.core.net.toUri
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.backup.PhotoWidgetBackupActivity
-import com.fibelatti.photowidget.configure.PhotoWidgetConfigureActivity
-import com.fibelatti.photowidget.configure.appWidgetId
-import com.fibelatti.photowidget.configure.aspectRatio
-import com.fibelatti.photowidget.configure.sharedPhotos
-import com.fibelatti.photowidget.hints.HintStorage
-import com.fibelatti.photowidget.licenses.OssLicensesActivity
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetStatus
-import com.fibelatti.photowidget.platform.AppTheme
-import com.fibelatti.photowidget.platform.BackgroundRestrictedSheetDialog
-import com.fibelatti.photowidget.platform.ComposeBottomSheetDialog
-import com.fibelatti.photowidget.platform.SelectionDialog
-import com.fibelatti.photowidget.platform.widgetPinningNotAvailable
-import com.fibelatti.photowidget.preferences.Appearance
-import com.fibelatti.photowidget.preferences.DataSaverPicker
-import com.fibelatti.photowidget.preferences.UserPreferencesStorage
-import com.fibelatti.photowidget.preferences.WidgetDefaultsActivity
-import com.fibelatti.photowidget.ui.Toggle
+import com.epic.widgetwall.R
+import com.epic.widgetwall.backup.PhotoWidgetBackupActivity
+import com.epic.widgetwall.configure.PhotoWidgetConfigureActivity
+import com.epic.widgetwall.configure.appWidgetId
+import com.epic.widgetwall.configure.aspectRatio
+import com.epic.widgetwall.configure.sharedPhotos
+import com.epic.widgetwall.hints.HintStorage
+import com.epic.widgetwall.licenses.OssLicensesActivity
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetStatus
+import com.epic.widgetwall.platform.AppTheme
+import com.epic.widgetwall.platform.BackgroundRestrictedSheetDialog
+import com.epic.widgetwall.platform.ComposeBottomSheetDialog
+import com.epic.widgetwall.platform.SelectionDialog
+import com.epic.widgetwall.platform.widgetPinningNotAvailable
+import com.epic.widgetwall.preferences.Appearance
+import com.epic.widgetwall.preferences.DataSaverPicker
+import com.epic.widgetwall.preferences.UserPreferencesStorage
+import com.epic.widgetwall.preferences.WidgetDefaultsActivity
+import com.epic.widgetwall.ui.Toggle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -471,6 +471,6 @@ class HomeActivity : AppCompatActivity() {
 
     private companion object {
 
-        private const val APP_URL = "https://play.google.com/store/apps/details?id=com.fibelatti.photowidget"
+        private const val APP_URL = "https://play.google.com/store/apps/details?id=com.epic.widgetwall"
     }
 }

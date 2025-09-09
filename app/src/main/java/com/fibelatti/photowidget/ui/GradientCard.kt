@@ -1,0 +1,60 @@
+package com.epic.widgetwall.ui
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+
+@Composable
+fun GradientCard(
+    modifier: Modifier = Modifier,
+    isDark: Boolean = false,
+    content: @Composable BoxScope.() -> Unit,
+) {
+    val gradientColors = if (isDark) {
+        listOf(
+            Color(0xFF2A1A1A), // Dark pinkish-nude card
+            Color(0xFF4A2A2A), // Medium dark pinkish-nude
+            Color(0xFF6B4A4A), // Light dark pinkish-nude
+        )
+    } else {
+        listOf(
+            Color(0xFFD4A5A5), // Dusty rose pinkish-nude (top)
+            Color(0xFFE8B4B4), // Medium pinkish-nude (middle)
+            Color(0xFFFDF8F8), // Very light cream (bottom)
+        )
+    }
+    
+    val gradientBrush = Brush.verticalGradient(
+        colors = gradientColors
+    )
+    
+    Card(
+        modifier = modifier,
+        colors = CardDefaults.cardColors(
+            containerColor = Color.Transparent
+        ),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 8.dp
+        ),
+        shape = MaterialTheme.shapes.large
+    ) {
+        Box(
+            modifier = Modifier
+                .background(
+                    brush = gradientBrush,
+                    shape = MaterialTheme.shapes.large
+                )
+                .padding(20.dp),
+            content = content
+        )
+    }
+}

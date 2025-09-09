@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import android.content.Context
 import android.content.Intent
@@ -39,14 +39,14 @@ import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import com.canhub.cropper.CropImageOptions
 import com.canhub.cropper.CropImageView
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.databinding.PhotoCropActivityBinding
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.platform.AppTheme
-import com.fibelatti.photowidget.platform.intentExtras
-import com.fibelatti.ui.foundation.ConnectedButtonRowItem
-import com.fibelatti.ui.preview.ThemePreviews
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.R
+import com.epic.widgetwall.databinding.PhotoCropActivityBinding
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.platform.AppTheme
+import com.epic.widgetwall.platform.intentExtras
+import com.epic.widgetwall.ui.foundation.ConnectedButtonRowItem
+import com.epic.widgetwall.ui.preview.ThemePreviews
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.roundToInt
 

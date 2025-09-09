@@ -1,13 +1,13 @@
-package com.fibelatti.photowidget.platform
+package com.epic.widgetwall.platform
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.fibelatti.photowidget.preferences.UserPreferences
-import com.fibelatti.photowidget.preferences.UserPreferencesStorage
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.preferences.UserPreferences
+import com.epic.widgetwall.preferences.UserPreferencesStorage
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.StateFlow

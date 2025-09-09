@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.di
+package com.epic.widgetwall.di
 
 import android.app.Application
 import android.content.Context
@@ -11,12 +11,12 @@ import coil3.memory.MemoryCache
 import coil3.memoryCacheMaxSizePercentWhileInBackground
 import coil3.request.addLastModifiedToFileCacheKey
 import coil3.request.allowHardware
-import com.fibelatti.photowidget.widget.data.DisplayedPhotoDao
-import com.fibelatti.photowidget.widget.data.ExcludedWidgetPhotoDao
-import com.fibelatti.photowidget.widget.data.LocalPhotoDao
-import com.fibelatti.photowidget.widget.data.PendingDeletionWidgetPhotoDao
-import com.fibelatti.photowidget.widget.data.PhotoWidgetDatabase
-import com.fibelatti.photowidget.widget.data.PhotoWidgetOrderDao
+import com.epic.widgetwall.widget.data.DisplayedPhotoDao
+import com.epic.widgetwall.widget.data.ExcludedWidgetPhotoDao
+import com.epic.widgetwall.widget.data.LocalPhotoDao
+import com.epic.widgetwall.widget.data.PendingDeletionWidgetPhotoDao
+import com.epic.widgetwall.widget.data.PhotoWidgetDatabase
+import com.epic.widgetwall.widget.data.PhotoWidgetOrderDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -44,7 +44,7 @@ object PhotoWidgetModule {
     ): PhotoWidgetDatabase = Room.databaseBuilder(
         context = application,
         klass = PhotoWidgetDatabase::class.java,
-        name = "com.fibelatti.photowidget.db",
+        name = "com.epic.widgetwall.db",
     ).build()
 
     @Provides

@@ -15,7 +15,7 @@
  */
 @file:Suppress("unused")
 
-package com.fibelatti.photowidget.platform
+package com.epic.widgetwall.platform
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

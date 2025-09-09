@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.home
+package com.epic.widgetwall.home
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
@@ -35,11 +35,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.platform.isBackgroundRestricted
-import com.fibelatti.photowidget.ui.WarningSign
-import com.fibelatti.ui.preview.AllPreviews
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.R
+import com.epic.widgetwall.platform.isBackgroundRestricted
+import com.epic.widgetwall.ui.WarningSign
+import com.epic.widgetwall.ui.preview.AllPreviews
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 
 @Composable
 fun HelpScreen(

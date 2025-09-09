@@ -1,10 +1,10 @@
-package com.fibelatti.photowidget.backup
+package com.epic.widgetwall.backup
 
 import android.content.Context
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetSource
-import com.fibelatti.photowidget.widget.LoadPhotoWidgetUseCase
-import com.fibelatti.photowidget.widget.data.PhotoWidgetStorage
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetSource
+import com.epic.widgetwall.widget.LoadPhotoWidgetUseCase
+import com.epic.widgetwall.widget.data.PhotoWidgetStorage
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import java.text.SimpleDateFormat

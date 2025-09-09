@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.platform
+package com.epic.widgetwall.platform
 
 import android.content.Context
 import android.content.Intent

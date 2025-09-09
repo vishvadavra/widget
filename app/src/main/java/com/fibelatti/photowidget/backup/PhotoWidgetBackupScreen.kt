@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 
-package com.fibelatti.photowidget.backup
+package com.epic.widgetwall.backup
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateDpAsState
@@ -58,14 +58,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.fromHtml
 import androidx.compose.ui.unit.dp
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.model.LocalPhoto
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.getPhotoPath
-import com.fibelatti.photowidget.ui.AsyncPhotoViewer
-import com.fibelatti.photowidget.ui.LoadingIndicator
-import com.fibelatti.ui.preview.AllPreviews
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.R
+import com.epic.widgetwall.model.LocalPhoto
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.getPhotoPath
+import com.epic.widgetwall.ui.AsyncPhotoViewer
+import com.epic.widgetwall.ui.LoadingIndicator
+import com.epic.widgetwall.ui.preview.AllPreviews
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 
 @Composable
 fun PhotoWidgetBackupScreen(

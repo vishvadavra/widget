@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:configure="com.fibelatti.photowidget.configure.PhotoWidgetConfigureActivity"
+    android:configure="com.epic.widgetwall.configure.PhotoWidgetConfigureActivity"
     android:description="@string/photo_widget_host_description"
     android:initialLayout="@layout/photo_widget"
     android:minWidth="40dp"

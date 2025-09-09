@@ -1,11 +1,11 @@
-package com.fibelatti.photowidget.widget
+package com.epic.widgetwall.widget
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.configure.appWidgetId
-import com.fibelatti.photowidget.widget.data.PhotoWidgetStorage
+import com.epic.widgetwall.R
+import com.epic.widgetwall.configure.appWidgetId
+import com.epic.widgetwall.widget.data.PhotoWidgetStorage
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

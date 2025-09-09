@@ -1,9 +1,9 @@
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import android.net.Uri
-import com.fibelatti.photowidget.model.LocalPhoto
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.LocalPhoto
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
 
 data class PhotoWidgetConfigureState(
     val photoWidget: PhotoWidget = PhotoWidget(),

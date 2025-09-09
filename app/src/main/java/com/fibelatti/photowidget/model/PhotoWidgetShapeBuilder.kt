@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.fibelatti.photowidget.model
+package com.epic.widgetwall.model
 
 import android.graphics.Matrix
 import android.graphics.Path

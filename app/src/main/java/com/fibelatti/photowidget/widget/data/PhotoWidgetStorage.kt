@@ -1,16 +1,16 @@
-package com.fibelatti.photowidget.widget.data
+package com.epic.widgetwall.widget.data
 
 import android.net.Uri
-import com.fibelatti.photowidget.model.DirectorySorting
-import com.fibelatti.photowidget.model.LocalPhoto
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetBorder
-import com.fibelatti.photowidget.model.PhotoWidgetCycleMode
-import com.fibelatti.photowidget.model.PhotoWidgetSource
-import com.fibelatti.photowidget.model.PhotoWidgetTapAction
-import com.fibelatti.photowidget.model.TapActionArea
-import com.fibelatti.photowidget.model.WidgetPhotos
-import com.fibelatti.photowidget.model.allWidgetPhotos
+import com.epic.widgetwall.model.DirectorySorting
+import com.epic.widgetwall.model.LocalPhoto
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetBorder
+import com.epic.widgetwall.model.PhotoWidgetCycleMode
+import com.epic.widgetwall.model.PhotoWidgetSource
+import com.epic.widgetwall.model.PhotoWidgetTapAction
+import com.epic.widgetwall.model.TapActionArea
+import com.epic.widgetwall.model.WidgetPhotos
+import com.epic.widgetwall.model.allWidgetPhotos
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton

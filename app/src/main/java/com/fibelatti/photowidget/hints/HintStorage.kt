@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.hints
+package com.epic.widgetwall.hints
 
 import android.content.Context
 import androidx.core.content.edit
@@ -8,7 +8,7 @@ import javax.inject.Inject
 class HintStorage @Inject constructor(@ApplicationContext context: Context) {
 
     private val sharedPreferences = context.getSharedPreferences(
-        "com.fibelatti.photowidget.HintPreferences",
+        "com.epic.widgetwall.HintPreferences",
         Context.MODE_PRIVATE,
     )
 

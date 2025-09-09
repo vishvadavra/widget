@@ -1,6 +1,6 @@
 @file:Suppress("Unused")
 
-package com.fibelatti.ui.theme
+package com.epic.widgetwall.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

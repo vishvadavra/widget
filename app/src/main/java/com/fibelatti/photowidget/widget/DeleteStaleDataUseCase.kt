@@ -1,7 +1,7 @@
-package com.fibelatti.photowidget.widget
+package com.epic.widgetwall.widget
 
 import android.content.Context
-import com.fibelatti.photowidget.widget.data.PhotoWidgetStorage
+import com.epic.widgetwall.widget.data.PhotoWidgetStorage
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 

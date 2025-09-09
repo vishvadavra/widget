@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.widget.data
+package com.epic.widgetwall.widget.data
 
 import android.content.ContentResolver
 import android.content.Context
@@ -9,10 +9,10 @@ import android.net.Uri
 import android.os.Build
 import android.webkit.MimeTypeMap
 import androidx.core.content.FileProvider
-import com.fibelatti.photowidget.model.LocalPhoto
-import com.fibelatti.photowidget.model.PhotoWidgetSource
-import com.fibelatti.photowidget.platform.PhotoDecoder
-import com.fibelatti.photowidget.preferences.UserPreferencesStorage
+import com.epic.widgetwall.model.LocalPhoto
+import com.epic.widgetwall.model.PhotoWidgetSource
+import com.epic.widgetwall.platform.PhotoDecoder
+import com.epic.widgetwall.preferences.UserPreferencesStorage
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import java.io.FileInputStream

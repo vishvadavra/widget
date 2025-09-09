@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.fibelatti.photowidget.viewer
+package com.epic.widgetwall.viewer
 
 import android.content.Intent
 import android.os.Bundle
@@ -47,22 +47,22 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.chooser.PhotoWidgetChooserActivity
-import com.fibelatti.photowidget.configure.appWidgetId
-import com.fibelatti.photowidget.model.LocalPhoto
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.getPhotoPath
-import com.fibelatti.photowidget.model.rawAspectRatio
-import com.fibelatti.photowidget.model.tapActionIncreaseBrightness
-import com.fibelatti.photowidget.model.tapActionViewOriginalPhoto
-import com.fibelatti.photowidget.platform.AppTheme
-import com.fibelatti.photowidget.platform.RememberedEffect
-import com.fibelatti.photowidget.ui.AsyncPhotoViewer
-import com.fibelatti.ui.imageviewer.ZoomableImageViewer
-import com.fibelatti.ui.imageviewer.rememberZoomableImageViewerState
-import com.fibelatti.ui.preview.AllPreviews
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.R
+import com.epic.widgetwall.chooser.PhotoWidgetChooserActivity
+import com.epic.widgetwall.configure.appWidgetId
+import com.epic.widgetwall.model.LocalPhoto
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.getPhotoPath
+import com.epic.widgetwall.model.rawAspectRatio
+import com.epic.widgetwall.model.tapActionIncreaseBrightness
+import com.epic.widgetwall.model.tapActionViewOriginalPhoto
+import com.epic.widgetwall.platform.AppTheme
+import com.epic.widgetwall.platform.RememberedEffect
+import com.epic.widgetwall.ui.AsyncPhotoViewer
+import com.epic.widgetwall.ui.imageviewer.ZoomableImageViewer
+import com.epic.widgetwall.ui.imageviewer.rememberZoomableImageViewerState
+import com.epic.widgetwall.ui.preview.AllPreviews
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 

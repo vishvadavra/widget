@@ -1,9 +1,9 @@
-package com.fibelatti.photowidget.model
+package com.epic.widgetwall.model
 
 import android.os.Parcelable
-import com.fibelatti.photowidget.model.PhotoWidget.Companion.DEFAULT_BRIGHTNESS
-import com.fibelatti.photowidget.model.PhotoWidget.Companion.DEFAULT_OPACITY
-import com.fibelatti.photowidget.model.PhotoWidget.Companion.DEFAULT_SATURATION
+import com.epic.widgetwall.model.PhotoWidget.Companion.DEFAULT_BRIGHTNESS
+import com.epic.widgetwall.model.PhotoWidget.Companion.DEFAULT_OPACITY
+import com.epic.widgetwall.model.PhotoWidget.Companion.DEFAULT_SATURATION
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

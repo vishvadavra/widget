@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import android.app.AlarmManager
 import android.content.Context
@@ -63,19 +63,19 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.core.app.AlarmManagerCompat
 import androidx.core.content.getSystemService
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.model.PhotoWidgetCycleMode
-import com.fibelatti.photowidget.model.PhotoWidgetLoopingInterval
-import com.fibelatti.photowidget.model.Time
-import com.fibelatti.photowidget.model.intervalRange
-import com.fibelatti.photowidget.platform.ComposeBottomSheetDialog
-import com.fibelatti.photowidget.platform.requestScheduleExactAlarmIntent
-import com.fibelatti.photowidget.ui.SliderSmallThumb
-import com.fibelatti.photowidget.widget.PhotoWidgetRescheduleReceiver
-import com.fibelatti.ui.foundation.ConnectedButtonRowItem
-import com.fibelatti.ui.preview.AllPreviews
-import com.fibelatti.ui.text.AutoSizeText
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.R
+import com.epic.widgetwall.model.PhotoWidgetCycleMode
+import com.epic.widgetwall.model.PhotoWidgetLoopingInterval
+import com.epic.widgetwall.model.Time
+import com.epic.widgetwall.model.intervalRange
+import com.epic.widgetwall.platform.ComposeBottomSheetDialog
+import com.epic.widgetwall.platform.requestScheduleExactAlarmIntent
+import com.epic.widgetwall.ui.SliderSmallThumb
+import com.epic.widgetwall.widget.PhotoWidgetRescheduleReceiver
+import com.epic.widgetwall.ui.foundation.ConnectedButtonRowItem
+import com.epic.widgetwall.ui.preview.AllPreviews
+import com.epic.widgetwall.ui.text.AutoSizeText
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
 

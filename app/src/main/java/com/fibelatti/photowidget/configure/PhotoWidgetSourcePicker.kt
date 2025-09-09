@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import android.content.Context
 import android.net.Uri
@@ -44,12 +44,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.model.PhotoWidgetSource
-import com.fibelatti.photowidget.platform.ComposeBottomSheetDialog
-import com.fibelatti.ui.preview.AllPreviews
-import com.fibelatti.ui.text.AutoSizeText
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.R
+import com.epic.widgetwall.model.PhotoWidgetSource
+import com.epic.widgetwall.platform.ComposeBottomSheetDialog
+import com.epic.widgetwall.ui.preview.AllPreviews
+import com.epic.widgetwall.ui.text.AutoSizeText
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 
 object PhotoWidgetSourcePicker {
 

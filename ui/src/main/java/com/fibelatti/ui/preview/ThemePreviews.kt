@@ -1,6 +1,6 @@
 @file:Suppress("Unused")
 
-package com.fibelatti.ui.preview
+package com.epic.widgetwall.ui.preview
 
 import android.content.res.Configuration
 import android.os.Build

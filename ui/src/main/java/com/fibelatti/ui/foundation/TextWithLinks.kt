@@ -1,4 +1,4 @@
-package com.fibelatti.ui.foundation
+package com.epic.widgetwall.ui.foundation
 
 import android.text.SpannableString
 import android.text.Spanned
@@ -21,7 +21,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
-import com.fibelatti.ui.foundation.TextWithLinks.findLinks
+import com.epic.widgetwall.ui.foundation.TextWithLinks.findLinks
 import java.util.regex.Pattern
 
 @Composable

@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import android.content.Context
 import android.content.Intent
@@ -65,21 +65,21 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetTapAction
-import com.fibelatti.photowidget.model.PhotoWidgetTapActions
-import com.fibelatti.photowidget.model.TapActionArea
-import com.fibelatti.photowidget.platform.ComposeBottomSheetDialog
-import com.fibelatti.photowidget.platform.withRoundedCorners
-import com.fibelatti.photowidget.ui.Toggle
-import com.fibelatti.ui.foundation.ColumnToggleButtonGroup
-import com.fibelatti.ui.foundation.ConnectedButtonRowItem
-import com.fibelatti.ui.foundation.ToggleButtonGroup
-import com.fibelatti.ui.foundation.dpToPx
-import com.fibelatti.ui.preview.AllPreviews
-import com.fibelatti.ui.text.AutoSizeText
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.R
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetTapAction
+import com.epic.widgetwall.model.PhotoWidgetTapActions
+import com.epic.widgetwall.model.TapActionArea
+import com.epic.widgetwall.platform.ComposeBottomSheetDialog
+import com.epic.widgetwall.platform.withRoundedCorners
+import com.epic.widgetwall.ui.Toggle
+import com.epic.widgetwall.ui.foundation.ColumnToggleButtonGroup
+import com.epic.widgetwall.ui.foundation.ConnectedButtonRowItem
+import com.epic.widgetwall.ui.foundation.ToggleButtonGroup
+import com.epic.widgetwall.ui.foundation.dpToPx
+import com.epic.widgetwall.ui.preview.AllPreviews
+import com.epic.widgetwall.ui.text.AutoSizeText
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 
 object PhotoWidgetTapActionPicker {
 

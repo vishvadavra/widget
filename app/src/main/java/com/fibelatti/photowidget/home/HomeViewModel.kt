@@ -1,15 +1,15 @@
-package com.fibelatti.photowidget.home
+package com.epic.widgetwall.home
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetSource
-import com.fibelatti.photowidget.model.PhotoWidgetStatus
-import com.fibelatti.photowidget.widget.LoadPhotoWidgetUseCase
-import com.fibelatti.photowidget.widget.PhotoWidgetAlarmManager
-import com.fibelatti.photowidget.widget.PhotoWidgetProvider
-import com.fibelatti.photowidget.widget.data.PhotoWidgetStorage
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetSource
+import com.epic.widgetwall.model.PhotoWidgetStatus
+import com.epic.widgetwall.widget.LoadPhotoWidgetUseCase
+import com.epic.widgetwall.widget.PhotoWidgetAlarmManager
+import com.epic.widgetwall.widget.PhotoWidgetProvider
+import com.epic.widgetwall.widget.data.PhotoWidgetStorage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject

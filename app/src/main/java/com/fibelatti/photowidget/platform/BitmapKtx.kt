@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.platform
+package com.epic.widgetwall.platform
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -16,10 +16,10 @@ import androidx.annotation.FloatRange
 import androidx.core.graphics.createBitmap
 import androidx.core.graphics.toRect
 import androidx.core.graphics.toRectF
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetColors
-import com.fibelatti.photowidget.model.PhotoWidgetShapeBuilder
-import com.fibelatti.photowidget.model.rawAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetColors
+import com.epic.widgetwall.model.PhotoWidgetShapeBuilder
+import com.epic.widgetwall.model.rawAspectRatio
 import kotlin.math.min
 import timber.log.Timber
 

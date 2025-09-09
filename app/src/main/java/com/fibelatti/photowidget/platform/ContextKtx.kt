@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.platform
+package com.epic.widgetwall.platform
 
 import android.app.ActivityManager
 import android.content.Context
@@ -11,7 +11,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.StyleRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.getSystemService
-import com.fibelatti.photowidget.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidget
 import com.google.android.material.color.DynamicColors
 import kotlin.math.roundToInt
 import kotlin.math.sqrt

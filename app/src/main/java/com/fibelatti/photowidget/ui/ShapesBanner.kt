@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.fibelatti.photowidget.ui
+package com.epic.widgetwall.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,8 +23,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.fibelatti.ui.preview.DevicePreviews
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.ui.preview.DevicePreviews
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 
 @Composable
 fun ShapesBanner(

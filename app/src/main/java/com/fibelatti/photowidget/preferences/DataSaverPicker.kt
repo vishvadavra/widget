@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.preferences
+package com.epic.widgetwall.preferences
 
 import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
@@ -14,14 +14,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.di.PhotoWidgetEntryPoint
-import com.fibelatti.photowidget.di.entryPoint
-import com.fibelatti.photowidget.platform.ComposeBottomSheetDialog
-import com.fibelatti.photowidget.ui.Toggle
-import com.fibelatti.ui.preview.LocalePreviews
-import com.fibelatti.ui.preview.ThemePreviews
-import com.fibelatti.ui.theme.ExtendedTheme
+import com.epic.widgetwall.R
+import com.epic.widgetwall.di.PhotoWidgetEntryPoint
+import com.epic.widgetwall.di.entryPoint
+import com.epic.widgetwall.platform.ComposeBottomSheetDialog
+import com.epic.widgetwall.ui.Toggle
+import com.epic.widgetwall.ui.preview.LocalePreviews
+import com.epic.widgetwall.ui.preview.ThemePreviews
+import com.epic.widgetwall.ui.theme.ExtendedTheme
 
 object DataSaverPicker {
 

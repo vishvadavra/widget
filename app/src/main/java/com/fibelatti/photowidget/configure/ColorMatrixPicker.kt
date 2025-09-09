@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.configure
+package com.epic.widgetwall.configure
 
 import android.content.Context
 import androidx.compose.foundation.Image
@@ -29,16 +29,16 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.model.LocalPhoto
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetColors
-import com.fibelatti.photowidget.platform.ComposeBottomSheetDialog
-import com.fibelatti.photowidget.platform.formatRangeValue
-import com.fibelatti.photowidget.platform.withRoundedCorners
-import com.fibelatti.photowidget.preferences.DefaultPicker
-import com.fibelatti.photowidget.ui.SliderSmallThumb
-import com.fibelatti.ui.foundation.dpToPx
+import com.epic.widgetwall.R
+import com.epic.widgetwall.model.LocalPhoto
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetColors
+import com.epic.widgetwall.platform.ComposeBottomSheetDialog
+import com.epic.widgetwall.platform.formatRangeValue
+import com.epic.widgetwall.platform.withRoundedCorners
+import com.epic.widgetwall.preferences.DefaultPicker
+import com.epic.widgetwall.ui.SliderSmallThumb
+import com.epic.widgetwall.ui.foundation.dpToPx
 
 object PhotoWidgetSaturationPicker {
 

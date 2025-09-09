@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.fibelatti.ui"
+    namespace = "com.epic.widgetwall.ui"
 
     buildFeatures {
         compose = true

@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.model
+package com.epic.widgetwall.model
 
 enum class TapActionArea {
     LEFT,

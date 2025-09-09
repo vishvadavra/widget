@@ -1,7 +1,7 @@
-package com.fibelatti.photowidget.model
+package com.epic.widgetwall.model
 
 import androidx.annotation.StringRes
-import com.fibelatti.photowidget.R
+import com.epic.widgetwall.R
 
 /**
  * Describes where the photos from a widget are coming from.

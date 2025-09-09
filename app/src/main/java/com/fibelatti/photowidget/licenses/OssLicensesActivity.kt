@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.fibelatti.photowidget.licenses
+package com.epic.widgetwall.licenses
 
 import android.content.res.Resources
 import android.os.Bundle
@@ -27,9 +27,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.fibelatti.photowidget.R
-import com.fibelatti.photowidget.platform.AppTheme
-import com.fibelatti.ui.foundation.copy
+import com.epic.widgetwall.R
+import com.epic.widgetwall.platform.AppTheme
+import com.epic.widgetwall.ui.foundation.copy
 import com.mikepenz.aboutlibraries.Libs
 import com.mikepenz.aboutlibraries.ui.compose.LibrariesContainer
 import com.mikepenz.aboutlibraries.ui.compose.LibraryDefaults

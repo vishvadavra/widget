@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.model
+package com.epic.widgetwall.model
 
 import androidx.annotation.IntRange
 import androidx.graphics.shapes.RoundedPolygon

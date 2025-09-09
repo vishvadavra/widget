@@ -1,12 +1,12 @@
-package com.fibelatti.photowidget.widget
+package com.epic.widgetwall.widget
 
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetBorder
-import com.fibelatti.photowidget.model.PhotoWidgetColors
-import com.fibelatti.photowidget.model.PhotoWidgetTapActions
-import com.fibelatti.photowidget.model.TapActionArea
-import com.fibelatti.photowidget.widget.data.PhotoWidgetStorage
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetBorder
+import com.epic.widgetwall.model.PhotoWidgetColors
+import com.epic.widgetwall.model.PhotoWidgetTapActions
+import com.epic.widgetwall.model.TapActionArea
+import com.epic.widgetwall.widget.data.PhotoWidgetStorage
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll

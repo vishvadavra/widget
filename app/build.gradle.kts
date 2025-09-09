@@ -15,8 +15,8 @@ plugins {
 
 object AppInfo {
 
-    const val APP_NAME = "Material Photo Widget"
-    const val APPLICATION_ID = "com.fibelatti.photowidget"
+    const val APP_NAME = "Epic Widget Wall"
+    const val APPLICATION_ID = "com.epic.widgetwall"
 
     private const val VERSION_MAJOR = 1
     private const val VERSION_MINOR = 32
@@ -41,7 +41,7 @@ android {
     val targetSdkVersion: Int by project
     val minSdkVersion: Int by project
 
-    namespace = "com.fibelatti.photowidget"
+    namespace = "com.epic.widgetwall"
     compileSdk = compileSdkVersion
 
     buildFeatures {

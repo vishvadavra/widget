@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.widget
+package com.epic.widgetwall.widget
 
 import android.content.Context
 import android.os.Build
@@ -11,8 +11,8 @@ import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.fibelatti.photowidget.model.PhotoWidgetCycleMode
-import com.fibelatti.photowidget.widget.data.PhotoWidgetStorage
+import com.epic.widgetwall.model.PhotoWidgetCycleMode
+import com.epic.widgetwall.widget.data.PhotoWidgetStorage
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import java.time.Duration

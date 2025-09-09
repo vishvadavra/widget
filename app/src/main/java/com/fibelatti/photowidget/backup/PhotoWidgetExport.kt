@@ -1,11 +1,11 @@
-package com.fibelatti.photowidget.backup
+package com.epic.widgetwall.backup
 
-import com.fibelatti.photowidget.model.LocalPhoto
-import com.fibelatti.photowidget.model.PhotoWidget
-import com.fibelatti.photowidget.model.PhotoWidgetAspectRatio
-import com.fibelatti.photowidget.model.PhotoWidgetBorder
-import com.fibelatti.photowidget.model.PhotoWidgetColors
-import com.fibelatti.photowidget.platform.enumValueOfOrNull
+import com.epic.widgetwall.model.LocalPhoto
+import com.epic.widgetwall.model.PhotoWidget
+import com.epic.widgetwall.model.PhotoWidgetAspectRatio
+import com.epic.widgetwall.model.PhotoWidgetBorder
+import com.epic.widgetwall.model.PhotoWidgetColors
+import com.epic.widgetwall.platform.enumValueOfOrNull
 import kotlinx.serialization.Serializable
 
 @Serializable

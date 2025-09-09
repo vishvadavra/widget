@@ -1,4 +1,4 @@
-package com.fibelatti.photowidget.widget
+package com.epic.widgetwall.widget
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -6,13 +6,13 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.AlarmManagerCompat
 import androidx.core.content.getSystemService
-import com.fibelatti.photowidget.configure.appWidgetId
-import com.fibelatti.photowidget.di.PhotoWidgetEntryPoint
-import com.fibelatti.photowidget.model.PhotoWidgetCycleMode
-import com.fibelatti.photowidget.model.Time
-import com.fibelatti.photowidget.platform.EntryPointBroadcastReceiver
-import com.fibelatti.photowidget.platform.setIdentifierCompat
-import com.fibelatti.photowidget.widget.data.PhotoWidgetStorage
+import com.epic.widgetwall.configure.appWidgetId
+import com.epic.widgetwall.di.PhotoWidgetEntryPoint
+import com.epic.widgetwall.model.PhotoWidgetCycleMode
+import com.epic.widgetwall.model.Time
+import com.epic.widgetwall.platform.EntryPointBroadcastReceiver
+import com.epic.widgetwall.platform.setIdentifierCompat
+import com.epic.widgetwall.widget.data.PhotoWidgetStorage
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.Calendar
 import java.util.TimeZone
