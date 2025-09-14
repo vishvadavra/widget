@@ -606,25 +606,20 @@ private fun ShapeTab(
     onCornerRadiusChange: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(
-        modifier = modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-    ) {
-        if (PhotoWidgetAspectRatio.SQUARE == photoWidget.aspectRatio) {
-            InlineShapePicker(
-                title = stringResource(id = R.string.widget_defaults_shape),
-                currentShapeId = photoWidget.shapeId,
-                onShapeChange = onShapeChange,
-                modifier = Modifier.padding(horizontal = 16.dp),
-            )
-        } else if (PhotoWidgetAspectRatio.FILL_WIDGET != photoWidget.aspectRatio) {
-            InlineCornerRadiusPicker(
-                title = stringResource(id = R.string.widget_defaults_corner_radius),
-                currentValue = photoWidget.cornerRadius,
-                onValueChange = onCornerRadiusChange,
-                modifier = Modifier.padding(horizontal = 16.dp),
-            )
-        }
+    if (PhotoWidgetAspectRatio.SQUARE == photoWidget.aspectRatio) {
+        InlineShapePicker(
+            title = stringResource(id = R.string.widget_defaults_shape),
+            currentShapeId = photoWidget.shapeId,
+            onShapeChange = onShapeChange,
+            modifier = modifier.padding(horizontal = 16.dp),
+        )
+    } else if (PhotoWidgetAspectRatio.FILL_WIDGET != photoWidget.aspectRatio) {
+        InlineCornerRadiusPicker(
+            title = stringResource(id = R.string.widget_defaults_corner_radius),
+            currentValue = photoWidget.cornerRadius,
+            onValueChange = onCornerRadiusChange,
+            modifier = modifier.padding(horizontal = 16.dp),
+        )
     }
 }
 
@@ -1035,83 +1030,77 @@ private fun InlineShapePicker(
     onShapeChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Card(
-        modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(8.dp),
-        colors = CardDefaults.cardColors().run {
-            copy(containerColor = containerColor.copy(alpha = 0.6f))
-        },
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(count = 3),
+        modifier = modifier
+            .fillMaxWidth()
+            .height(300.dp),
+        contentPadding = PaddingValues(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onSurface,
+        items(PhotoWidgetShapeBuilder.shapes) { shape ->
+            val isSelected = shape.id == currentShapeId
+
+            // Create a variety of green shade colors for backgrounds
+            val greenShades = listOf(
+                Color(0xFF4CAF50), // Material Green 500
+                Color(0xFF66BB6A), // Material Green 400
+                Color(0xFF81C784), // Material Green 300
+                Color(0xFFA5D6A7), // Material Green 200
+                Color(0xFFC8E6C9), // Material Green 100
+                Color(0xFF2E7D32), // Material Green 700
+                Color(0xFF388E3C), // Material Green 600
+                Color(0xFF1B5E20), // Material Green 800
+                Color(0xFF0D4F1C), // Material Green 900
+                Color(0xFFE8F5E8), // Very light green
             )
 
-            LazyHorizontalGrid(
-                rows = GridCells.Fixed(count = 3),
+            // Cycle through green shades based on shape index
+            val colorIndex = PhotoWidgetShapeBuilder.shapes.indexOf(shape) % greenShades.size
+            val backgroundColor = greenShades[colorIndex]
+
+            val shapeColor = if (isSelected) {
+                MaterialTheme.colorScheme.primary
+            } else {
+                backgroundColor
+            }
+
+            Box(
                 modifier = Modifier
-                    .height(240.dp)
-                    .fillMaxWidth(),
-                contentPadding = PaddingValues(horizontal = 8.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                items(PhotoWidgetShapeBuilder.shapes) { shape ->
-                    val isSelected = shape.id == currentShapeId
-
-                    // Create a variety of white shade colors
-                    val whiteShades = listOf(
-                        Color(0xFFFFFFFF), // Pure white
-                        Color(0xFFF8F9FA), // Very light gray
-                        Color(0xFFE9ECEF), // Light gray
-                        Color(0xFFDEE2E6), // Medium light gray
-                        Color(0xFFCED4DA), // Medium gray
-                        Color(0xFFADB5BD), // Darker gray
-                        Color(0xFF6C757D), // Dark gray
-                        Color(0xFF495057), // Very dark gray
-                        Color(0xFF343A40), // Almost black
-                        Color(0xFF212529), // Black
+                    .aspectRatio(1f)
+                    .clickable { onShapeChange(shape.id) }
+                    .background(
+                        color = shapeColor,
+                        shape = RoundedCornerShape(8.dp)
                     )
-
-                    // Cycle through white shades based on shape index
-                    val colorIndex = PhotoWidgetShapeBuilder.shapes.indexOf(shape) % whiteShades.size
-                    val baseColor = whiteShades[colorIndex]
-
-                    val shapeColor = if (isSelected) {
-                        MaterialTheme.colorScheme.primary
-                    } else {
-                        baseColor
-                    }
-
-                    Box(
-                        modifier = Modifier
-                            .size(60.dp)
-                            .clickable { onShapeChange(shape.id) }
-                            .then(
-                                if (isSelected) {
-                                    Modifier.border(
-                                        width = 2.dp,
-                                        color = MaterialTheme.colorScheme.primary,
-                                        shape = RoundedCornerShape(8.dp)
-                                    )
-                                } else {
-                                    Modifier
-                                }
+                    .then(
+                        if (isSelected) {
+                            Modifier.border(
+                                width = 2.dp,
+                                color = MaterialTheme.colorScheme.primary,
+                                shape = RoundedCornerShape(8.dp)
                             )
-                    ) {
-                        ColoredShape(
-                            shapeId = shape.id,
-                            color = shapeColor,
-                            modifier = Modifier.fillMaxSize(),
-                        )
-                    }
+                        } else {
+                            Modifier
+                        }
+                    )
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(12.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    ColoredShape(
+                        shapeId = shape.id,
+                        color = if (isSelected) {
+                            MaterialTheme.colorScheme.onPrimary
+                        } else {
+                            Color.White
+                        },
+                        modifier = Modifier.fillMaxSize(),
+                    )
                 }
             }
         }
