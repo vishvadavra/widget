@@ -89,7 +89,8 @@
     <string name="photo_widget_configure_navigate_back_warning_restore">Widget\'ı geri yüklemeyi tamamlamak için ana ekrana eklemeniz gerekir. Geri yüklemeden çıkılsın mı?</string>
     <string name="photo_widget_configure_tab_content">İçerik</string>
     <string name="photo_widget_configure_tab_appearance">Görünüm</string>
-    <string name="photo_widget_configure_tab_behavior">Davranış</string>
+    <string name="photo_widget_configure_tab_shape">Şekil</string>
+    <string name="photo_widget_configure_tab_behavior">Dokunma</string>
     <string name="photo_widget_configure_import_prompt">Başka bir widget\'tan içe aktar?</string>
     <string name="photo_widget_configure_import_prompt_action">Seçmek</string>
     <string name="photo_widget_configure_import_dialog_title">Widget\'ı seçin</string>

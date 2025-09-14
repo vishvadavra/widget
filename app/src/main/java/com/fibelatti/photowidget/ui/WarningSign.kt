@@ -47,11 +47,7 @@ fun WarningSign(
             horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Icon(
-                painter = painterResource(R.drawable.ic_warning),
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.onSurface,
-            )
+        
 
             Text(
                 text = text,

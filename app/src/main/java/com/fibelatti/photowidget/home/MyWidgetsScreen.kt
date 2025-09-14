@@ -86,7 +86,12 @@ fun MyWidgetsScreen(
                 LazyVerticalStaggeredGrid(
                     columns = StaggeredGridCells.Fixed(count = if (maxWidth < 600.dp) 2 else 4),
                     modifier = Modifier.fillMaxSize(),
-                    contentPadding = PaddingValues(start = 16.dp, top = 80.dp, end = 16.dp, bottom = 120.dp),
+                    contentPadding = PaddingValues(
+                        start = 16.dp, 
+                        top = if (hasDeletedWidgets) 120.dp else 80.dp, 
+                        end = 16.dp, 
+                        bottom = 120.dp
+                    ),
                     verticalItemSpacing = 16.dp,
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
@@ -147,7 +152,11 @@ fun MyWidgetsScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 32.dp, top = 120.dp, end = 32.dp),
+                        .padding(
+                            start = 32.dp, 
+                            top = if (hasDeletedWidgets) 160.dp else 120.dp, 
+                            end = 32.dp
+                        ),
                     verticalArrangement = Arrangement.spacedBy(32.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
@@ -175,8 +184,8 @@ fun MyWidgetsScreen(
                 text = stringResource(id = R.string.photo_widget_home_removed_widgets_hint),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .align(Alignment.BottomCenter)
-                    .padding(start = 32.dp, bottom = 16.dp, end = 32.dp),
+                    .align(Alignment.TopCenter)
+                    .padding(start = 32.dp, top = 16.dp, end = 32.dp),
             )
         }
     }

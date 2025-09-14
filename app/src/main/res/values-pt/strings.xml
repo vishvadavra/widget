@@ -89,7 +89,8 @@
     <string name="photo_widget_configure_navigate_back_warning_restore">Para finalizar a restauração do widget, você deve adicioná-lo à tela inicial. Sair sem restaurar?</string>
     <string name="photo_widget_configure_tab_content">Conteúdo</string>
     <string name="photo_widget_configure_tab_appearance">Aparência</string>
-    <string name="photo_widget_configure_tab_behavior">Comportamento</string>
+    <string name="photo_widget_configure_tab_shape">Forma</string>
+    <string name="photo_widget_configure_tab_behavior">Tocar</string>
     <string name="photo_widget_configure_import_prompt">Importar de outro widget?</string>
     <string name="photo_widget_configure_import_prompt_action">Escolher</string>
     <string name="photo_widget_configure_import_dialog_title">Escolha o widget</string>

@@ -108,7 +108,8 @@
 
     <string name="photo_widget_configure_tab_content">Photos</string>
     <string name="photo_widget_configure_tab_appearance">Settings</string>
-    <string name="photo_widget_configure_tab_behavior">Behavior</string>
+    <string name="photo_widget_configure_tab_shape">Shape</string>
+    <string name="photo_widget_configure_tab_behavior">Tap</string>
 
     <string name="photo_widget_configure_import_prompt">Import from another widget?</string>
     <string name="photo_widget_configure_import_prompt_action">Choose</string>

@@ -88,7 +88,8 @@
     <string name="photo_widget_configure_navigate_back_warning_restore">To finish restoring the widget you must add it to home screen. Exit without restoring?</string>
     <string name="photo_widget_configure_tab_content">Laman</string>
     <string name="photo_widget_configure_tab_appearance">Itsura</string>
-    <string name="photo_widget_configure_tab_behavior">Pag-uugali</string>
+    <string name="photo_widget_configure_tab_shape">Hugis</string>
+    <string name="photo_widget_configure_tab_behavior">Tap</string>
     <string name="photo_widget_configure_import_prompt">Kumuha mula sa ibang widget?</string>
     <string name="photo_widget_configure_import_prompt_action">Piliin</string>
     <string name="photo_widget_configure_import_dialog_title">Piliin ang widget</string>

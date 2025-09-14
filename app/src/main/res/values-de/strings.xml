@@ -89,7 +89,8 @@
     <string name="photo_widget_configure_navigate_back_warning_restore">Um die Wiederherstellung des Widgets abzuschließen, müssen Sie es zum Startbildschirm hinzufügen. Ohne Wiederherstellung beenden?</string>
     <string name="photo_widget_configure_tab_content">Inhalt</string>
     <string name="photo_widget_configure_tab_appearance">Aussehen</string>
-    <string name="photo_widget_configure_tab_behavior">Verhalten</string>
+    <string name="photo_widget_configure_tab_shape">Form</string>
+    <string name="photo_widget_configure_tab_behavior">Tippen</string>
     <string name="photo_widget_configure_import_prompt">Von einem anderen Widget importieren?</string>
     <string name="photo_widget_configure_import_prompt_action">Auswählen</string>
     <string name="photo_widget_configure_import_dialog_title">Widget auswählen</string>

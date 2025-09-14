@@ -91,7 +91,8 @@
     <string name="photo_widget_configure_navigate_back_warning_restore">Чтобы завершить восстановление виджета, вы должны добавить его на главный экран. Выйти без восстановления?</string>
     <string name="photo_widget_configure_tab_content">Содержание</string>
     <string name="photo_widget_configure_tab_appearance">Внешний вид</string>
-    <string name="photo_widget_configure_tab_behavior">Поведение</string>
+    <string name="photo_widget_configure_tab_shape">Форма</string>
+    <string name="photo_widget_configure_tab_behavior">Нажатие</string>
     <string name="photo_widget_configure_import_prompt">Импортировать из другого виджета?</string>
     <string name="photo_widget_configure_import_prompt_action">Чтобы выбрать</string>
     <string name="photo_widget_configure_import_dialog_title">Выберите виджет</string>

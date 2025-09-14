@@ -91,7 +91,8 @@
     <string name="photo_widget_configure_navigate_back_warning_restore">כדי לסיים את שחזור הווידג\'ט עליך להוסיף אותו למסך הבית. לצאת מבלי לשחזר?</string>
     <string name="photo_widget_configure_tab_content">תוכן</string>
     <string name="photo_widget_configure_tab_appearance">נראות</string>
-    <string name="photo_widget_configure_tab_behavior">התנהגות</string>
+    <string name="photo_widget_configure_tab_shape">צורה</string>
+    <string name="photo_widget_configure_tab_behavior">לחיצה</string>
     <string name="photo_widget_configure_import_prompt">לייבא מווידג\'ט אחר?</string>
     <string name="photo_widget_configure_import_prompt_action">בחר</string>
     <string name="photo_widget_configure_import_dialog_title">בחר ווידג\'ט</string>

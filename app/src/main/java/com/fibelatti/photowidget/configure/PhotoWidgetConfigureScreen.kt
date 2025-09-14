@@ -465,13 +465,27 @@ private fun PhotoWidgetEditor(
                 ConfigureTab.APPEARANCE -> {
                     AppearanceTab(
                         photoWidget = photoWidget,
-                        onShapeChange = onShapeChange,
-                        onCornerRadiusChange = onCornerRadiusChange,
                         onBorderChange = onBorderChange,
                         onOpacityChange = onOpacityChange,
                         onSaturationChange = onSaturationChange,
                         onBrightnessChange = onBrightnessChange,
                         onPaddingChange = onPaddingChange,
+                        modifier = tabContentModifier,
+                    )
+                }
+
+                ConfigureTab.SHAPE -> {
+                    ShapeTab(
+                        photoWidget = photoWidget,
+                        onShapeChange = onShapeChange,
+                        onCornerRadiusChange = onCornerRadiusChange,
+                        modifier = tabContentModifier,
+                    )
+                }
+
+                ConfigureTab.BEHAVIOR -> {
+                    BehaviorTab(
+                        photoWidget = photoWidget,
                         onTapActionPickerClick = onTapActionPickerClick,
                         modifier = tabContentModifier,
                     )
@@ -532,48 +546,17 @@ private fun ContentTab(
 @Composable
 private fun AppearanceTab(
     photoWidget: PhotoWidget,
-    onShapeChange: (String) -> Unit,
-    onCornerRadiusChange: (Int) -> Unit,
     onBorderChange: (PhotoWidgetBorder) -> Unit,
     onOpacityChange: (Float) -> Unit,
     onSaturationChange: (Float) -> Unit,
     onBrightnessChange: (Float) -> Unit,
     onPaddingChange: (Int) -> Unit,
-    onTapActionPickerClick: (PhotoWidgetTapActions) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        // Tap Action Picker at the top
-        PickerDefault(
-            title = stringResource(id = R.string.widget_defaults_tap_action),
-            currentValue = buildString {
-                appendLine(stringResource(id = photoWidget.tapActions.left.label))
-                appendLine(stringResource(id = photoWidget.tapActions.center.label))
-                appendLine(stringResource(id = photoWidget.tapActions.right.label))
-            },
-            onClick = { onTapActionPickerClick(photoWidget.tapActions) },
-            modifier = Modifier.padding(horizontal = 16.dp),
-        )
-
-        if (PhotoWidgetAspectRatio.SQUARE == photoWidget.aspectRatio) {
-            InlineShapePicker(
-                title = stringResource(id = R.string.widget_defaults_shape),
-                currentShapeId = photoWidget.shapeId,
-                onShapeChange = onShapeChange,
-                modifier = Modifier.padding(horizontal = 16.dp),
-            )
-        } else if (PhotoWidgetAspectRatio.FILL_WIDGET != photoWidget.aspectRatio) {
-            InlineCornerRadiusPicker(
-                title = stringResource(id = R.string.widget_defaults_corner_radius),
-                currentValue = photoWidget.cornerRadius,
-                onValueChange = onCornerRadiusChange,
-                modifier = Modifier.padding(horizontal = 16.dp),
-            )
-        }
-
         if (PhotoWidgetAspectRatio.FILL_WIDGET != photoWidget.aspectRatio) {
             InlineBorderPicker(
                 title = stringResource(R.string.photo_widget_configure_border),
@@ -613,6 +596,59 @@ private fun AppearanceTab(
                 modifier = Modifier.padding(horizontal = 16.dp),
             )
         }
+    }
+}
+
+@Composable
+private fun ShapeTab(
+    photoWidget: PhotoWidget,
+    onShapeChange: (String) -> Unit,
+    onCornerRadiusChange: (Int) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        if (PhotoWidgetAspectRatio.SQUARE == photoWidget.aspectRatio) {
+            InlineShapePicker(
+                title = stringResource(id = R.string.widget_defaults_shape),
+                currentShapeId = photoWidget.shapeId,
+                onShapeChange = onShapeChange,
+                modifier = Modifier.padding(horizontal = 16.dp),
+            )
+        } else if (PhotoWidgetAspectRatio.FILL_WIDGET != photoWidget.aspectRatio) {
+            InlineCornerRadiusPicker(
+                title = stringResource(id = R.string.widget_defaults_corner_radius),
+                currentValue = photoWidget.cornerRadius,
+                onValueChange = onCornerRadiusChange,
+                modifier = Modifier.padding(horizontal = 16.dp),
+            )
+        }
+    }
+}
+
+@Composable
+private fun BehaviorTab(
+    photoWidget: PhotoWidget,
+    onTapActionPickerClick: (PhotoWidgetTapActions) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        // Tap Action Picker
+        PickerDefault(
+            title = stringResource(id = R.string.widget_defaults_tap_action),
+            currentValue = buildString {
+                appendLine(stringResource(id = photoWidget.tapActions.left.label))
+                appendLine(stringResource(id = photoWidget.tapActions.center.label))
+                appendLine(stringResource(id = photoWidget.tapActions.right.label))
+            },
+            onClick = { onTapActionPickerClick(photoWidget.tapActions) },
+            modifier = Modifier.padding(horizontal = 16.dp),
+        )
     }
 }
 
