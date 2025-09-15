@@ -50,6 +50,7 @@ import androidx.compose.foundation.lazy.layout.LazyLayoutCacheWindow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonGroup
@@ -65,10 +66,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
@@ -84,6 +88,7 @@ import androidx.compose.ui.graphics.RadialGradientShader
 import androidx.compose.ui.graphics.Shader
 import androidx.compose.ui.graphics.ShaderBrush
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -126,6 +131,9 @@ import com.epic.widgetwall.ui.foundation.fadingEdges
 import com.epic.widgetwall.ui.preview.AllPreviews
 import com.epic.widgetwall.ui.text.AutoSizeText
 import com.epic.widgetwall.ui.theme.ExtendedTheme
+import com.github.skydoves.colorpicker.compose.BrightnessSlider
+import com.github.skydoves.colorpicker.compose.HsvColorPicker
+import com.github.skydoves.colorpicker.compose.rememberColorPickerController
 import kotlin.math.roundToInt
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyGridState
@@ -665,7 +673,7 @@ private fun CurrentPhotoViewer(
         contentAlignment = Alignment.Center,
     ) {
         val gradientColors = listOf(
-            Color.White,
+            Color.Gray,
             MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.9f),
         )
 
@@ -1158,6 +1166,7 @@ private fun InlineCornerRadiusPicker(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun InlineBorderPicker(
     title: String,
@@ -1165,6 +1174,7 @@ private fun InlineBorderPicker(
     onBorderChange: (PhotoWidgetBorder) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    var showColorPicker by remember { mutableStateOf(false) }
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(8.dp),
@@ -1212,7 +1222,126 @@ private fun InlineBorderPicker(
                 }
             }
 
+            // Show border width for all border types except None
+            if (currentBorder !is PhotoWidgetBorder.None) {
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    // Show color picker only for Color border
+                    if (currentBorder is PhotoWidgetBorder.Color) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            // Color preview
+                            Box(
+                                modifier = Modifier
+                                    .size(40.dp)
+                                    .background(
+                                        color = Color("#${currentBorder.colorHex}".toColorInt()),
+                                        shape = RoundedCornerShape(8.dp)
+                                    )
+                                    .border(
+                                        width = 1.dp,
+                                        color = MaterialTheme.colorScheme.outline,
+                                        shape = RoundedCornerShape(8.dp)
+                                    )
+                            )
+
+                            // Color picker button
+                            OutlinedButton(
+                                onClick = {
+                                    showColorPicker = true
+                                },
+                                modifier = Modifier.weight(1f),
+                            ) {
+                                Text(
+                                    text = "Pick Color",
+                                    style = MaterialTheme.typography.labelMedium,
+                                )
+                            }
+                        }
+                    }
+
+                    // Border width slider for all border types except None
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        Text(
+                            text = "Border Width",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.onSurface,
+                        )
+                        
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Slider(
+                                value = when (currentBorder) {
+                                    is PhotoWidgetBorder.Color -> currentBorder.width.toFloat()
+                                    is PhotoWidgetBorder.Dynamic -> currentBorder.width.toFloat()
+                                    is PhotoWidgetBorder.MatchPhoto -> currentBorder.width.toFloat()
+                                    else -> 0f
+                                },
+                                onValueChange = { newWidth ->
+                                    val newBorder = when (currentBorder) {
+                                        is PhotoWidgetBorder.Color -> PhotoWidgetBorder.Color(
+                                            colorHex = currentBorder.colorHex,
+                                            width = newWidth.roundToInt()
+                                        )
+                                        is PhotoWidgetBorder.Dynamic -> PhotoWidgetBorder.Dynamic(
+                                            width = newWidth.roundToInt()
+                                        )
+                                        is PhotoWidgetBorder.MatchPhoto -> PhotoWidgetBorder.MatchPhoto(
+                                            width = newWidth.roundToInt(),
+                                            type = currentBorder.type
+                                        )
+                                        else -> currentBorder
+                                    }
+                                    onBorderChange(newBorder)
+                                },
+                                modifier = Modifier.weight(1f),
+                                valueRange = PhotoWidgetBorder.VALUE_RANGE,
+                                thumb = { SliderSmallThumb() },
+                            )
+
+                            val currentWidth = when (currentBorder) {
+                                is PhotoWidgetBorder.Color -> currentBorder.width
+                                is PhotoWidgetBorder.Dynamic -> currentBorder.width
+                                is PhotoWidgetBorder.MatchPhoto -> currentBorder.width
+                                else -> 0
+                            }
+
+                            Text(
+                                text = formatPercent(value = currentWidth * PhotoWidgetBorder.PERCENT_FACTOR * 100),
+                                modifier = Modifier.width(60.dp),
+                                color = MaterialTheme.colorScheme.onSurface,
+                                textAlign = TextAlign.End,
+                                style = MaterialTheme.typography.bodyMedium,
+                            )
+                        }
+                    }
+                }
+            }
+
         }
+    }
+
+    // Color picker dialog
+    if (showColorPicker && currentBorder is PhotoWidgetBorder.Color) {
+        ColorPickerDialog(
+            currentColor = currentBorder.colorHex,
+            onColorSelected = { colorHex ->
+                onBorderChange(PhotoWidgetBorder.Color(colorHex = colorHex, width = currentBorder.width))
+                showColorPicker = false
+            },
+            onDismiss = { showColorPicker = false }
+        )
     }
 }
 
@@ -1514,4 +1643,96 @@ private fun PhotoWidgetConfigureScreenTallPreview() {
         )
     }
 }
+
+@Composable
+private fun ColorPickerDialog(
+    currentColor: String,
+    onColorSelected: (String) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    val colorPickerController = rememberColorPickerController()
+    var colorHex by remember { mutableStateOf(currentColor) }
+
+    LaunchedEffect(currentColor) {
+        colorHex = currentColor
+        colorPickerController.selectByColor(Color("#$currentColor".toColorInt()), fromUser = false)
+    }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = {
+            Text(text = "Pick Border Color")
+        },
+        text = {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+            ) {
+                // Color preview
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(60.dp)
+                        .background(
+                            color = Color("#$colorHex".toColorInt()),
+                            shape = RoundedCornerShape(8.dp)
+                        )
+                        .border(
+                            width = 2.dp,
+                            color = MaterialTheme.colorScheme.outline,
+                            shape = RoundedCornerShape(8.dp)
+                        ),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = "#$colorHex",
+                        style = MaterialTheme.typography.labelLarge,
+                        color = if (Color("#$colorHex".toColorInt()).luminance() > 0.5f) Color.Black else Color.White,
+                    )
+                }
+
+                // Color picker
+                HsvColorPicker(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(200.dp),
+                    controller = colorPickerController,
+                    onColorChanged = { colorEnvelope ->
+                        colorHex = colorEnvelope.hexCode.drop(2)
+                    },
+                )
+
+                // Brightness slider
+                BrightnessSlider(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(40.dp)
+                        .border(
+                            width = 1.dp,
+                            color = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f),
+                            shape = RoundedCornerShape(6.dp),
+                        ),
+                    controller = colorPickerController,
+                )
+            }
+        },
+        confirmButton = {
+            TextButton(
+                onClick = {
+                    onColorSelected(colorHex)
+                }
+            ) {
+                Text("Apply")
+            }
+        },
+        dismissButton = {
+            TextButton(
+                onClick = onDismiss
+            ) {
+                Text("Cancel")
+            }
+        }
+    )
+}
+
 // endregion Previews
